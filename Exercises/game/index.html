@@ -2,36 +2,45 @@
 
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles/mainstyle.css">
+
+	<!-- Favicont -->
+	<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+
+	<!-- Pixelify Sans Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+
 	<title>Dig Dug Overview</title>
-	<style>
-		h1 { 
-			color:red;
-			font-family: sans-serif;
-			border-bottom: 1px solid blue;
-		}
-		blockquote { 
-			background-color: lightgray;
-			padding: 1rem;
-		}
-	</style>
 </head>
 <body>
-	<h1>Dig Dug</h1>
-	
-	<img src="dig-dug-burnt.png" alt="Screenshot of Dig Dug gameplay">
-	
-	<hr>
-	
-	<h2>Publishing Info</h2>
-	<ul>
-		<li>Published by: <em>Atari, Inc.</em></li>
-		<li>Developed by: <em><abbr title="Nakamura Manufacturing Company">Namco</abbr> Limited</em></li>
-		<li>Released: Apr, 1982</li>
-	</ul>
+	<header>
+		<object data="images/dig-dug.svg" width="300"><img src="images/dig-dug.png" alt="DigDug logo" width="250"></object>
+		
+		<h1>Dig Dug</h1>
+
+		<img src="images/dig-dug-burnt.png" alt="Screenshot of Dig Dug gameplay">
+		<p><a href="enlarged/pic1.html">Other Images</a></p>
+
+		<hr>
+		
+		<h2>Publishing Info</h2>
+		<ul>
+			<li>Published by: <em>Atari, Inc.</em></li>
+			<li>Developed by: <em><abbr title="Nakamura Manufacturing Company">Namco</abbr> Limited</em></li>
+			<li>Released: Apr, 1982</li>
+		</ul>
+		
+	</header>
 	
 	<hr>
 	
 	<main>
+		<img src="images/fygar_inflate_s.jpg" alt="" class="side">
 		<h2>Description</h2>
 		<p>
 			<strong>Dig Dug</strong> is a 1-2 player arcade game in which you have to use your shovel to dig your way through the earth. <br>
@@ -39,7 +48,7 @@
 			The only weapon that you carry is an air pump, which you can use to inflate the monsters <br>
 			to the point where they explode. [...]
 		</p>
-		
+
 		<hr>
 		
 		<h2>Game Categories</h2>
@@ -62,8 +71,16 @@
 	<hr>
 	
 	<footer>
-		<h2>Source</h2>
-		<a href="https://www.mobygames.com/game/arcade/dig-dug">https://www.mobygames.com/game/arcade/dig-dug</a>
+		<h2 id="sources">Source</h2>
+		<ul>
+			<!--
+				rel="noopener noreferrer" is apparently a security implementation that prevents redirects,
+				such as into fake login screens that I discovered when trying to remember how to open in a
+				new tab. - Ryan Doyle
+			-->
+			<li><a href="https://www.mobygames.com/game/arcade/dig-dug" target="_blank" rel="noopener noreferrer">https://www.mobygames.com/game/arcade/dig-dug</a></li>
+			<li><a href="https://www.gamespot.com/reviews/dig-dug-review/1900-6159707/">https://www.gamespot.com/reviews/dig-dug-review/1900-6159707/</a></li>
+		</ul>
 	</footer>
 	
 	
