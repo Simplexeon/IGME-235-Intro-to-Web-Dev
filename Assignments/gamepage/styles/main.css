@@ -1,0 +1,83 @@
+/*
+    COLOR PALLETE:
+    Darks:
+    Purple | #5F0F40
+    Navy | #0F4C5C
+
+    Mids:
+    Red | #9A031E
+    Orange | #E36414
+
+    Brights:
+    Yellow | #FB8B24
+*/
+
+body {
+    background-color: darkorange;
+    text-align: center;
+}
+
+main {
+    width: 85rem;
+    margin: auto;
+
+    background-color: blue;
+    border-radius: 1rem;
+
+    padding: 1rem;
+    margin-top: 3rem;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    /* Margins */
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    font-size: 2rem;
+}
+
+.stats {
+    font-size: 1.3rem;
+}
+
+p {
+    width: 65rem;
+    margin: auto;
+    text-align: left;
+}
+
+img {
+    border-radius: .5rem;
+    width: 25rem;
+
+    /* Margins */
+    vertical-align: middle;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+div.gallery {
+    width: 100rem;
+    margin: auto;
+    text-align: center;
+    border-radius: 1rem;
+
+    background-color: black;
+}
+
+img.title{
+    width: 50rem;
+    display: block;
+
+    /* Margins */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
