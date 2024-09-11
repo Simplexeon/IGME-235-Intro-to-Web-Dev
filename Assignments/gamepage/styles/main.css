@@ -10,24 +10,24 @@
 
     Brights:
     Yellow | #FB8B24
+	Sand | #FAB86B
 */
 
 body {
-    background-color: darkorange;
+    background-color: #E36414;
     text-align: center;
 }
 
-main {
+.content {
     width: 85rem;
+	max-width: 85%;
     margin: auto;
-
-    background-color: blue;
-    border-radius: 1rem;
 
     padding: 1rem;
     margin-top: 3rem;
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 1.2rem;
 }
 
 h2 {
@@ -36,18 +36,79 @@ h2 {
     margin-right: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+	padding: 0;
+	
+	font-family: "Russo One", sans-serif;
+    font-size: 2.3rem;
+}
 
-    font-size: 2rem;
+h2.compressed {
+	margin-top: .5rem;
+	margin-bottom: -.2rem;
+}
+
+h2.footer {
+	margin-top: -2rem;
 }
 
 .stats {
-    font-size: 1.3rem;
+	width: 60rem;
+	max-width: 75%;
+	margin: auto;
+    background-color: #0F4C5C;
+    border-radius: 1rem;
+	padding: 1rem;
+	
+	color: #FAB86B;
+}
+
+ul {
+    font-size: 1.5rem;
+	font-weight: 500;
+	padding: 0;
+	margin-bottom: .4rem;
+	
+	list-style-type: none;
+}
+
+ul.reviews {
+	font-size: 1.4rem;
 }
 
 p {
     width: 65rem;
+	max-width: 90%;
     margin: auto;
+	margin-bottom: 2rem;
     text-align: left;
+	line-height: 1.4rem;
+}
+
+em {
+	font-style: italic;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+ol {
+	width: 65rem;
+	max-width: 90%;
+    margin: auto;
+	margin-bottom: 2rem;
+    text-align: left;
+	line-height: 1.4rem;
+}
+
+br {
+	margin-bottom: 1rem;
+}
+
+blockquote {
+	margin: auto;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	
+	text-align: center;
 }
 
 img {
@@ -64,11 +125,12 @@ img {
 
 div.gallery {
     width: 100rem;
+	max-width: 95%;
     margin: auto;
     text-align: center;
     border-radius: 1rem;
 
-    background-color: black;
+    background-color: #9A031E;
 }
 
 img.title{
@@ -80,4 +142,24 @@ img.title{
     margin-right: auto;
     margin-top: 5rem;
     margin-bottom: 5rem;
+}
+
+hr{
+	width: 75%;
+	margin: auto;
+	color: #5F0F40;
+}
+
+hr.footer {
+	margin: auto;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+a:link {
+	color: #5F0F40;
+}
+
+a:visited {
+	color: #0F4C5C;
 }
