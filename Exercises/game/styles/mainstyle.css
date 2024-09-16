@@ -16,8 +16,38 @@ h2 {
     margin-left: 10px;
 }
 
-body {
+main {
+    margin: 0 auto;
+    width: 80vw;
+
     background-color:#EAE2B7;
+    padding: 1rem;
+}
+
+header {
+    margin: 0 auto;
+    width: 80vw;
+
+    background-color:#EAE2B7;
+    padding: 1rem;
+}
+
+footer {
+    border-style: solid;
+    border-color: black;
+    border-width: .3rem;
+
+    margin: 0 auto;
+    width: 80vw;
+    background-color:#EAE2B7;
+
+    padding: 1rem;
+}
+
+body {
+    background-color:#003049;
+    background-image: url("../images/fygar_inflate_s.jpg");
+    background-size: 12rem;
 }
 
 img {
@@ -31,6 +61,11 @@ a:link {
 
 a:visited {
     color: #003049;
+}
+
+hr {
+    width: 80%;
+    margin: 2rem auto;
 }
 
 img.side {
