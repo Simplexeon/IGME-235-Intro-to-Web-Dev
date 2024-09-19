@@ -1,0 +1,91 @@
+/* Full page setup */
+.fullpage {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    border-style: solid;
+}
+
+
+/* Start columns */
+.init {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.4rem;
+}
+
+.init img {
+    width: 30%;
+    max-width: 20rem;
+    max-height: 20rem;
+
+    margin: 2rem;
+    border-radius: 1rem;
+
+    border-style: solid;
+
+
+}
+
+.init div {
+    width: 40%;
+    max-width: 30rem;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: start;
+
+    margin: 2rem;
+
+    border-style: solid;
+}
+
+.init h1 {
+    margin: .2rem 1rem;
+
+    font-size: 2em;
+}
+
+.init h2 {
+    margin: .2rem 1rem;
+
+    font-size: 1.6em;
+}
+
+.init p {
+    margin: 1rem;
+}
+
+em {
+    font-style: italic;
+}
+
+em.company {
+    font-weight: bold;
+}
+
+
+
+/* Links Section */
+
+.links {
+    flex: 0 1 50%;
+    max-width: 40rem;
+    width: 50%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    border-style: solid;
+}
