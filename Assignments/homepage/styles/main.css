@@ -36,8 +36,8 @@
 }
 
 .init div {
-    width: 40%;
-    max-width: 30rem;
+    width: 45%;
+    max-width: 40rem;
 
     display: flex;
     flex-flow: column nowrap;
@@ -78,9 +78,9 @@ em.company {
 /* Links Section */
 
 .links {
-    flex: 0 1 50%;
-    max-width: 40rem;
-    width: 50%;
+    flex: 0 1 70%;
+    max-width: 60rem;
+    width: 70%;
 
     display: flex;
     flex-flow: row wrap;
@@ -88,4 +88,30 @@ em.company {
     align-items: center;
 
     border-style: solid;
+}
+
+ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    list-style-type: none;
+}
+
+li {
+    width: 10rem;
+    height: 3rem;
+    
+    display: block;
+
+    margin: 3rem;
+
+    background-color: black;
+    color: white;
+
+    border-radius: 1rem;
+
+    text-align: center;
+    align-content: center;
 }
