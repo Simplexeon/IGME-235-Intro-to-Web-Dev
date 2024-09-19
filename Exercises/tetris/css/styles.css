@@ -1,0 +1,109 @@
+/* Do everything in this file */
+
+
+/* Main sections */
+header, main, footer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* SubHeadings */
+h2, h3 {
+    border-width: 0;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: red;
+
+    clear: both;
+}
+
+
+/* Orientation Diagram */
+figure {
+    max-width: 650px;
+    width: 40%;
+    margin: 0 auto;
+}
+figure img {
+    float: right;
+    width: 100%;
+    margin: 2rem;
+}
+
+
+/* Tetromino Divs */
+#tetlist {
+    display: flex;
+    flex-flow: wrap row;
+    align-items: center;
+}
+
+.tet {
+    width: 20rem;
+    max-width: 20rem;
+    height: 25rem;
+    max-height: 25rem;
+    margin: 1rem;
+
+    flex: 0 1 20rem;
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    justify-content: space-between;
+
+    border-style: solid;
+    border-color: blue;
+    border-width: 1rem;
+
+    text-align: center;
+}
+
+.tet img {
+    display: block;
+
+    width: 10em;
+    max-width: 50%;
+    flex: 0 1;
+    clear: both;
+    margin: 1rem auto;
+}
+
+.tet.long img {
+    width: 70%;
+    max-width: 18rem;
+}
+
+.tet.square img {
+    width: 40%;
+    max-width: 8rem;
+}
+
+.name {
+    width: 100%;
+    margin: 1rem 0;
+    flex: 0 1;
+
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.aliases {
+    flex: 0 1 1rem;
+
+    text-align: left;
+    margin: 1em;
+}
+
+
+
+/* Footer */
+footer {
+    width: 10rem;
+    position: fixed;
+    top: 0;
+    right: 27rem;
+
+    z-index: -5;
+}
