@@ -119,13 +119,19 @@ a {
 a:hover {
 	background-color: rgb(56, 56, 56);
 	color: white;
-	
+}
+
+a:visited {
+	background-color: rgb(35, 35, 35);
+	color: white;
+}
+
+a:active {
+	background-color: white;
+	color: black;
 }
 
 a:focus {
-	background-color: white;
-	color: black;
-	
 	border-style: solid;
 	border-width: .2rem;
 }
@@ -162,12 +168,13 @@ a.icons:hover {
 	background-color: rgba(128, 128, 128, 0.26);
 }
 
-a.icons:focus {
+a.icons:active {
+	background-color: rgba(56, 56, 56, .26);
+}
+
+a.icons:visited {
 	background-color: white;
 	color: black;
-	
-	border-style: solid;
-	border-width: .2rem;
 }
 
 a#github {
