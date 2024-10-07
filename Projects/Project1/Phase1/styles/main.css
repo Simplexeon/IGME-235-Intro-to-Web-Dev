@@ -1,0 +1,78 @@
+
+body {
+    width: 50%;
+    margin: auto;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-template-areas: "title"
+                         "content";
+
+    
+
+}
+
+.title {
+    grid-area: title;
+}
+
+article {
+    grid-area: content;
+}
+
+
+
+.columned-footer {
+    column-count: 4;
+
+    column-gap: 2rem;
+
+    column-rule-width: 2px;
+    column-rule-style: solid;
+}
+
+
+/* Text */
+
+h1 {
+    font-size: 44px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+q {
+    font-style: italic;
+}
+
+
+
+/* Images */
+
+img#main {
+    width: 70%;
+    height: 600px;
+
+    float: right;
+}
+
+img#poster {
+    position: absolute;
+    left: 45rem;
+    top: 22rem;
+
+    width: 200px;
+    height: 350px;
+}
+
+img#reagan {
+    float: right;
+    width: 85px;
+    height: 125px;
+
+    shape-outside: image();
+}
