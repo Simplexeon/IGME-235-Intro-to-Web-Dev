@@ -1,0 +1,106 @@
+
+* {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+html {
+	background-color: darkgray;
+}
+
+
+nav {
+	display: flex;
+	justify-content: center;
+	
+	position: sticky;
+	left: 2rem;
+	top: -1rem;
+	
+	height: 5rem;
+	
+	background-color: hsl(0, 0%, 45%);
+	border-radius: 1rem;
+}
+
+nav ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
+
+nav ul li {
+	list-style: none;
+}
+
+nav ul li a {
+	padding: 1rem;
+	margin: .5rem;
+	
+	border-radius: 1rem;
+}
+
+nav ul li a:link {
+	font-style: normal;
+	text-decoration: none;
+	
+	font-size: 1.2rem;
+	font-weight: bold;
+	
+	color: white;
+}
+
+nav ul li a:visited {
+	color: white;
+}
+
+nav ul li a:hover {
+	text-decoration: underline;
+	
+	color: white;
+	background-color: hsla(0, 0%, 100%, 0.218);
+}
+
+nav ul li a:focus {
+	border-style: solid;
+	border-width: 2px;
+}
+
+nav ul li a:active {
+	color: gray;
+	background-color: hsla(0, 0%, 0%, 0.3);
+}
+
+
+body {
+	width: 55%;
+	max-width: 65rem;
+	
+	margin: auto;
+	padding: 2rem;
+	
+	color: white;
+	background-color: hsl(0, 0%, 25%);
+	
+}
+
+object {
+	display: block;
+	
+	width: 90%;
+	height: 75rem;
+	
+	margin: 2rem auto;
+}
+
+a:link {
+	color: aqua;
+}
+
+a:visited {
+	color: fuchsia;
+}
+
+em {
+	font-weight: bold;
+}

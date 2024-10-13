@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="css/doc.css">
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ryan Doyle One-Page Website Documentation</title>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="#reference">Reference Page</a></li>
+			<li><a href="#p1">Phase 1 Documentation</a></li>
+			<li><a href="#p2">Phase 2 Documentation</a></li>
+		</ul>
+	</nav>
+	
+	<main>
+		<object type="application/pdf" data="src/reference.pdf" id="reference"></object>
+		
+		<h1 id="p1"><a href="spec.html">Phase 1</a></h1>
+		
+		<h2>Development Notes</h2>
+		<p>
+			Yes, the implementation that I ended up using for phase one isn't really responsive at all.
+			This is due to the 3-column layout that the main article has, wrapping around the image. I could get
+			the paragraph to wrap around the image responsively just fine, but <em>nothing</em> I did would make
+			the paragraph wrap around properly when in the 3-column mode. 
+			<br>
+			I floated the image (what I did originally),
+			I used a grid, I moved the image around to different parts of the html and tried all sorts of things,
+			but nothing would work except for absolutely positioning the image and manually inserting breaks into the
+			text to make it wrap as intended.
+			<br>
+			I could have submitted it with the main article not in 3 columns but still wrapping around the image
+			just fine, but since I tried so much to make the columns work I figured that even the janky method would have
+			to do, as it represents the original page as close as I could get it.
+		</p>
+		
+		<h2>Responsiveness Plan</h2>
+		<img src="media/responsiveness-plan.png" alt="Page Responsiveness Diagram">
+		<p>
+			I plan to make this page function with a vertical layout at smaller screen sizes, and then at larger screen
+			sizes float the image to the right so that the main article content wraps around it. This will function a little
+			bit differently from the phase 1 implementation, as I needed to do some really strange things in order to make
+			the layout and word wrapping fit properly with the 3-column text layout.
+			<br>
+			Changing the layout like this should be pretty easy when I don't need to worry about columnizing that content,
+			as I've already done that before (at first, I didn't realize that text was split into columns).
+		</p>
+		
+		<h2>Sources</h2>
+		<ul>
+			<li>1981 Text: Self Made</li>
+			<li><a href="https://ew.com/movies/2018/03/30/raiders-of-the-lost-ark-facts/">Raiders of the Lost Ark Film Image</a></li>
+			<li><a href="https://www.photowall.com/us/raiders-of-the-lost-ark-poster">Raiders of the Lost Ark Movie Poster</a></li>
+			<li><a href="https://merch.politicalretro.com/products/ronald-reagan-the-time-is-now-1980-campaign-poster-magnet">Ronald Reagan Advertisement</a></li>
+		</ul>
+		
+		<h1 id="p2">Phase 2</h1>
+	</main>
+	
+</body>
+</html>

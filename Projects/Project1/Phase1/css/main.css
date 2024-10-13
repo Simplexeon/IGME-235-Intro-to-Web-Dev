@@ -1,0 +1,167 @@
+
+
+body {
+    width: 50%;
+    margin: auto;
+}
+
+article {
+	display: block;
+	
+	column-count: 3;
+	column-width: 15rem;
+	column-fill: auto;
+	
+	height: 800px;
+}
+
+.break {
+	break-before: always;
+	display: inline-block;
+	margin-top: 620px;
+}
+
+
+.columned-footer {
+    column-count: 4;
+
+    column-gap: 2rem;
+
+    column-rule-width: 2px;
+    column-rule-style: solid;
+	
+	font-size: .8rem;
+}
+
+footer {
+	margin-bottom: 3rem;
+}
+
+
+/* Text */
+
+* {
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    font-size: 5.3rem;
+	font-weight: normal;
+	margin-bottom: .5rem;
+}
+
+h2 {
+    font-size: 1.45rem;
+	font-weight: normal;
+}
+
+h3 {
+	margin: .2rem;
+	margin-bottom: .5rem;
+	
+	color: dodgerblue;
+}
+
+
+article q {
+	font-family:'Times New Roman', Times, serif;
+	
+}
+
+article p {
+	font-family:'Times New Roman', Times, serif;
+}
+
+q {
+    font-style: italic;
+	margin: .3rem;
+}
+
+em {
+	font-style: normal;
+	font-weight: bold;
+	color: dodgerblue;
+}
+
+hr {
+	border-style: solid;
+	border-color: black;
+	border-width: .14rem;
+}
+
+footer h2 {
+	margin: .2rem;
+	
+	width: max-content;
+	padding: .6rem;
+	
+	position: relative;
+	top: .4rem;
+	right: .2rem;
+	
+	background-color: bisque;
+	
+	font-weight: bold;
+	color: dodgerblue;
+}
+
+footer div {
+	padding: .6rem;
+	
+	background-color: bisque;
+}
+
+
+/* Images */
+
+img#header-text {
+	position: relative;
+	top: 15px;
+}
+
+img#main {
+	display: block;
+	
+    width: 620px;
+    height: auto;
+	
+	text-align: right;
+	position: absolute;
+	left: 50rem;
+}
+
+div#poster {
+    position: relative;
+    left: 10px;
+
+    width: 30px;
+    height: 275px;
+	
+	margin: 1rem;
+	float: right;
+}
+
+div#poster img {
+	width: 200px;
+	height: auto;
+	
+	transform: rotate(5deg);
+}
+
+div#reagan {
+	float: right;
+    width: 85px;
+    height: 110px;
+
+	margin: .3rem;
+}
+
+div#reagan img {
+	width: 85px;
+	height: auto;
+	
+	transform: rotate(5deg);
+	
+	border-style: solid;
+	border-width: 2px;
+}
