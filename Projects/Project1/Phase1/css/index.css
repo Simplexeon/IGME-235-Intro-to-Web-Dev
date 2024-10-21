@@ -1,0 +1,269 @@
+/* Layout */
+
+body {
+    width: 100%;
+	max-width: 1200px;
+	
+    margin: auto;
+}
+
+nav {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+	background-color: black;
+	color: white;
+}
+
+nav ul {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+nav li {
+	margin: 1rem 3rem;
+	
+	list-style: none;
+}
+
+
+.game-card {
+	width: 70%;
+	max-width: 400px;
+	
+	margin: 2rem auto;
+}
+
+.game-card img {
+	width: 100%;
+	height: auto;
+	
+	border-style: solid;
+	border-width: .4rem;
+	border-radius: 1rem;
+	border-color: black;
+}
+
+.game-card h3 {
+	margin: .2rem;
+	
+	font-size: 1.4rem;
+	
+}
+
+.game-card h4 {
+	margin: .2rem;
+	
+	font-size: 1.2rem;
+	font-weight: normal;
+}
+
+.game-card p {
+	margin: .6rem .2rem;
+}
+
+
+main {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: repeat(auto, 5);
+	grid-template-areas: "title"
+						 "bio"
+						 "feature"
+						 "project-intro"
+						 "projects";
+						 
+	margin-top: 8rem;
+}
+
+@media screen and (min-width: 1200px) {
+	main {
+		grid-template-columns: 32% 1fr;
+		grid-template-rows: repeat(auto, 4);
+		grid-template-areas: "title title"
+							 "feature bio"
+							 "project-intro project-intro"
+							 "projects projects";
+	}
+}
+
+#title {
+	grid-area: title;
+}
+
+.vflex {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: left;
+}
+
+#bio {
+	grid-area: bio;
+	
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+	
+	margin: 1rem;
+}
+
+#bio .vflex {
+	margin: 1rem;
+}
+
+#bio h2 {
+	margin: .2rem .1rem;
+	
+	font-weight: bold;
+}
+
+#bio p {
+	margin: .3rem;
+}
+
+#bio ul {
+	margin: .2rem;
+	text-align: left;
+	padding-left: 0;
+}
+
+#bio li {
+	display: inline;
+	list-style: none;
+	text-indent: 0;
+	
+}
+
+#feature {
+	grid-area: feature;
+}
+
+main > h2 {
+	grid-area: project-intro;
+	
+	display: block;
+	width: 100%;
+	
+	text-align: center;
+	margin: .2rem auto;
+	margin-top: 4rem;
+	
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+#projects {
+	grid-area: projects;
+	
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	
+	margin: 3rem;
+}
+
+#projects .game-card {
+	margin: 2rem 3rem;
+}
+
+#contact ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#contact li {
+	list-style: none;
+	
+	margin: 1rem 4rem;
+}
+
+
+
+/* Text */
+
+* {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 1.1rem;
+}
+
+h1 {
+	font-size: 2.5rem;
+	font-weight: bold;
+	
+	margin: 1rem .5rem;
+	margin-bottom: .2rem;
+}
+
+h2 {
+	font-size: 1.6rem;
+	font-weight: normal;
+	
+	margin: 1rem .5rem;
+	margin-top: .2rem;
+}
+
+#feature h2 {
+	margin-bottom: .2rem;
+	
+	text-align: center;
+	font-weight: bold;
+}
+
+#feature div {
+	margin: .4rem auto;
+}
+
+#contact i {
+	font-size: 3rem;
+	color: black;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+	
+	padding: .4rem;
+	border-radius: 1rem;
+}
+
+a::focus {
+	border-radius: 1rem;
+	border-width: .4rem;
+	
+	border-color: darkgrey;
+}
+
+a::hover {
+	background-color: hsla(0, 0%, 100%, 0.788);
+}
+
+a::active {
+	background-color: hsla(0, 0%, 100%, 0.4);;
+}
+
+p {
+	line-height: 1.4rem;
+	line-height-step: .2rem;
+}
+
+
+/* Images */
+
+#portrait {
+	width: 300px;
+	height: auto;
+	
+	border-radius: 1rem;
+}
