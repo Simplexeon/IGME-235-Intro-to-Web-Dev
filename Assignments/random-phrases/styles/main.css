@@ -31,4 +31,31 @@ main {
 
 #phrase-display {
     font-size: 1.6rem;
+	color:white;
+	text-shadow: 0 0 10px yellow,
+				 2px 2px orange;
+}
+
+button {
+	align-self: center;
+	
+	width: 35%;
+	padding: 1rem;
+	
+	font-size: 1.3rem;
+	background-color: black;
+	
+	border-style: solid;
+	border-color: white;
+	border-width: .6rem;
+	border-radius: 1rem;
+	
+}
+
+button:hover {
+	background-color: rgb(96, 96, 96);
+}
+
+button:active {
+	background-color: rgb(255, 255, 255);
 }
