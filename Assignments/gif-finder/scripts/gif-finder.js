@@ -35,7 +35,7 @@ function searchButtonClicked(){
     let limit = document.querySelector("#limit").value;
     url += "&limit=" + limit;
 
-    document.querySelector("#status").innerHTML = "<b>Searching for " + displayTerm + "</b>";
+    document.querySelector("#status").innerHTML = "<b>Searching for " + displayTerm + "</b> <br> <img src=\"images/spinner.gif\" alt=\"\" id=\"spinner\">";
 
     console.log(url);
 
@@ -55,8 +55,34 @@ function getData(url) {
 
 function dataLoaded(e) {
     let xhr = e.target;
-
-    console.log(xhr.responseText);
+	
+	let obj = JSON.parse(xhr.responseText);
+	if(!obj.data || obj.data.length == 0) {
+		document.querySelector("#status").innerHTML = "<b>No results found for " + displayTerm + "</b>";
+		return;
+	}
+	
+	let results = obj.data;
+	console.log("results.length = " + results.length);
+	let bigString = "<p><i>Here are " + results.length + " results for " + displayTerm + "</i></p>";
+	
+	for(let i = 0; i < results.length; i++) {
+		let result = results[i];
+		let smallURL = result.images.fixed_width_small.url;
+		
+		if(!smallURL) {
+			smallURL = "../images/no-image-found.png";
+		}
+		
+		let url = result.url;
+		let line = `<div class='result'><img src='${smallURL}' title='${result.id}' alt='${displayTerm}'>`;
+		line += `<p>Rating: ${result.rating.toUpperCase()}</p><span><a target='_blank' href='${url}'>View on Giphy</a></span></div>`;
+		
+		bigString += line;
+	}
+	
+	document.querySelector("#content").innerHTML = bigString;
+	document.querySelector("#status").innerHTML = "<b>Success!</b>";
 }
 
 
