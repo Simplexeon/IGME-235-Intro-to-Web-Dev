@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DMS++</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/index.js"></script>
 </head>
 <body>
     <header>
@@ -21,9 +24,11 @@
     <main>
         <h2>API Testing</h2>
         <ul>
-            <li><a href="https://api.open5e.com/v1/monsters/?search=tarrasque">Open5e API - Get Tarrasque information.</a></li>
-            <li><a href="">Pexels API - Get cat picture</a></li>
-            <li><a href="http://www.randomnumberapi.com/api/v1.0/random?min=1&max=20&count=10">Random Number API - Roll a couple D20s</a></li>
+            <li>
+                <button id="open5e-button">Open5e API - Get Tarrasque information.</button>
+                <br>
+                <p id="open5e"></p>
+            </li>
         </ul>
     </main>
 </body>
