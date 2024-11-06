@@ -64,7 +64,8 @@ function dataLoaded(e) {
 	
 	let results = obj.data;
 	console.log("results.length = " + results.length);
-	let bigString = "<p><i>Here are " + results.length + " results for " + displayTerm + "</i></p>";
+    document.querySelector("#status").innerHTML = "<b>Success!</b><br><i>Here are " + results.length + " results for " + displayTerm + "</i>";
+	let bigString = "";
 	
 	for(let i = 0; i < results.length; i++) {
 		let result = results[i];
@@ -75,14 +76,14 @@ function dataLoaded(e) {
 		}
 		
 		let url = result.url;
-		let line = `<div class='result'><img src='${smallURL}' title='${result.id}' alt='${displayTerm}'>`;
-		line += `<p>Rating: ${result.rating.toUpperCase()}</p><span><a target='_blank' href='${url}'>View on Giphy</a></span></div>`;
-		
+		let line = `<div class='result'><span><a target='_blank' href='${url}'>${result.title}</a><p>Rating: ${result.rating.toUpperCase()}</p></span>`;
+		line += `<a target='_blank' href='${url}'><img src='${smallURL}' title='View on GIPHY' alt='${displayTerm}'></a></div>`;
+
 		bigString += line;
 	}
 	
 	document.querySelector("#content").innerHTML = bigString;
-	document.querySelector("#status").innerHTML = "<b>Success!</b>";
+	
 }
 
 

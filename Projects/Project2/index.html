@@ -9,19 +9,63 @@
     <script src="scripts/index.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Dungeon Master Screen ++</h1>
-        <p>This site allows you to keep track of lots of important information while running a DnD5e game!</p>
-        <h3>Features</h3>
-        <ul>
-            <li>Monsters</li>
-            <li>Initiative</li>
-            <li>Dice</li>
-            <li>Loot</li>
-        </ul>
-    </header>
-
     <main>
+        <div id="intro">
+            <h1>Dungeon Master Screen ++</h1>
+            <p>This site allows you to keep track of lots of important information while running a DnD5e game!</p>
+            <h3>Features</h3>
+            <ul>
+                <li>Monsters</li>
+                <li>Initiative</li>
+                <li>Dice</li>
+                <li>Loot</li>
+            </ul>
+        </div>
+        
+
+
+        <h2>Combat Order</h2>
+        <div class="block" id="co-block">
+            <div class="order mini" id="co">
+                <!-- Monster and player mini-forms go here, sorted -->
+            </div>
+            <div id="co-controls">
+                <!-- Buttons to control the combat order -->
+                <button id="co-prev">Previous</button> 
+                <button id="co-update">New Order</button>
+                <button id="co-next">Next</button>
+            </div>
+        </div>
+
+        <h2>Players</h2>
+        <div class="block" id="player-block">
+            <div class="order" id="players">
+                <!-- Player details go here -->
+            </div>
+            <div id="player-controls">
+                <!-- Control players -->
+                <button id="player-new">New Player</button>
+            </div>
+        </div>
+
+        <h2>Enemies</h2>
+        <div class="block" id="enemy-block">
+            <div id="enemy-controls">
+                <input id="enemy-search" type="text" size="35" maxlength="35" value="skeleton"></input>
+                <button id="enemy-add">Add</button>
+            </div>
+            <div class="order" id="enemies">
+
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
         <h2>API Testing</h2>
         <ul>
             <li>

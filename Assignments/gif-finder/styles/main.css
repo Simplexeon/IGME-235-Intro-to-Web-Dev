@@ -21,6 +21,12 @@
 }
 
 #results {
+	display: flex;
+	flex-flow: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+
 	width: 1000px;
 	max-width: 80%;
 	
@@ -28,6 +34,14 @@
 	padding: 1rem;
 	
 	text-align: center;
+}
+
+#content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 2em;
+
+	width: 100%;
 }
 
 header{
@@ -45,14 +59,19 @@ header h1{
 
 #status{
 	font-style: italic;
-	height:32px;
+	margin: 1rem;
 }
 
 .result {
-	position: relative;
-	height: 175px;
-	width: 100px;
-	float:left;
+	display: flex;
+	flex-flow: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+
+	width: 15rem;
+	height: 15rem;
+
 	border:1px solid gray;
 	padding:5px;
 	margin-left:10px;
@@ -60,11 +79,10 @@ header h1{
 }
 
 .result img {
-	position: absolute;
-	left: 5px;
-	bottom: 5px;
-	display:block;
-	
+	width: 10rem;
+	height: auto;
+	max-height: 10rem;
+	width: auto;
 }
 
 .result span{
