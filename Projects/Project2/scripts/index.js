@@ -4,11 +4,24 @@
 const DND_QUERY = "https://api.open5e.com/v1/monsters/?search=tarrasque";
 const RNG_QUERY = "http://www.randomnumberapi.com/api/v1.0/random?min=1&max=20&count=10";
 
+
+const combatOrder = [];
+
 window.onload = init;
 
 function init() {
-
     document.querySelector("#open5e-button").onclick = dndPressed;
+
+}
+
+function updateCombatOrderDisplay() {
+    let co = document.querySelector("#co");
+
+    let orderString = "";
+
+    for(let combatUnit in order) {
+        order[combatUnit]["name"]
+    }
 
 }
 
