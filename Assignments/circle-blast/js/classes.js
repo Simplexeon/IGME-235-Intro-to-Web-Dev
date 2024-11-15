@@ -36,3 +36,22 @@ class Circle extends PIXI.Graphics {
 		this.fwd.y *= -1;
 	}
 }
+
+class Bullet extends PIXI.Graphics {
+	constructor(color = 0xff0000, x = 0, y = 0, fwd = { x: 0, y: -1 }) {
+		super();
+		this.rect(-2, -3, 4, 6);
+		this.fill(color);
+		this.x = x;
+		this.y = y;
+		this.fwd = fwd;
+		this.speed = 400;
+		this.isAlive = true;
+		Object.seal(this);
+	}
+	
+	move(dt = 1/60) {
+		this.x += this.fwd.x * this.speed * dt;
+		this.y += this.fwd.y * this.speed * dt;
+	}
+}

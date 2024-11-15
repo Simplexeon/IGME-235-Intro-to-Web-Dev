@@ -12,6 +12,8 @@ let startScene;
 let gameScene, ship, scoreLabel, lifeLabel, shootSound, hitSound, fireballSound;
 let gameOverScene;
 
+let gameOverScoreLabel;
+
 let circles = [];
 let bullets = [];
 let aliens = [];
@@ -91,6 +93,8 @@ async function setup() {
 	});
 	
 	// #7 - Load sprite sheet
+	
+	explosionTextures = loadSpriteSheet();
 	
 	// #8 - Start update loop
 	
@@ -179,6 +183,17 @@ function createLabelsAndButtons() {
 	gameOverText.y = sceneHeight / 2 - 160;
 	gameOverScene.addChild(gameOverText);
 	
+	gameOverScoreLabel = new PIXI.Text("", {
+		fill: 0xffffff,
+		fontSize: 32,
+		fontFamily: "Futura",
+		stroke: 0xff0000,
+		strokeThickness: 6,
+	});
+	gameOverScoreLabel.x = sceneWidth / 2 - gameOverScoreLabel.width / 2;
+	gameOverScoreLabel.y = sceneHeight / 2;
+	gameOverScene.addChild(gameOverScoreLabel);
+	
 	// 3B - make "play again?" button
 	let playAgainButton = new PIXI.Text("Play Again?", buttonStyle);
 	playAgainButton.x = sceneWidth / 2 - playAgainButton.width / 2;
@@ -192,11 +207,34 @@ function createLabelsAndButtons() {
 }
 
 
+function loadSpriteSheet() {
+	let texture = PIXI.Texture.from("media/images/explosions.png");
+	
+	let width = 64;
+	let height = 64;
+	let numFrames = 16;
+	
+	let textures = [];
+	for(let i = 0; i < numFrames; i++) {
+		
+		let frame = new PIXI.Texture({
+			source: texture,
+			frame: new PIXI.Rectangle(i * width, 320, width, height)
+		});
+		
+		textures.push(frame);
+	}
+	
+	return textures;
+}
+
+
 function startGame() {
 	startScene.visible = false;
 	gameOverScene.visible = false;
 	gameScene.visible = true;
 	
+	app.view.onclick = fireBullet;
 	
 	levelNum = 1;
 	score = 0;
@@ -259,11 +297,26 @@ function gameLoop(){
 	
 	// #4 - Move Bullets
 	
+	for (let b of bullets) {
+		b.move(dt);
+	}
 	
 	// #5 - Check for Collisions
 	
 	for(let c of circles) {
 		
+		for(let b of bullets) {
+			if(rectsIntersect(b, c)) {
+				fireballSound.play();
+				createExplosion(c.x,c.y,64,64);
+				gameScene.removeChild(b);
+				b.isAlive = false;
+				gameScene.removeChild(c);
+				c.isAlive = false;
+				increaseScoreBy(1);
+				break;
+			}
+		}
 		
 		if (c.isAlive && rectsIntersect(c, ship)) {
 			hitSound.play();
@@ -290,6 +343,11 @@ function gameLoop(){
 	}
 	
 	// #8 - Load next level
+	
+	if(circles.length <= 0) {
+		levelNum++;
+		loadLevel();
+	}
 }
 
 function createCircles(numCircles = 10) {
@@ -307,6 +365,40 @@ function loadLevel() {
 	createCircles(levelNum * 5);
 }
 
+function fireBullet() {
+	if(paused) return;
+	
+	let bullet = new Bullet(0xffffff, ship.x, ship.y);
+	bullets.push(bullet);
+	gameScene.addChild(bullet);
+	
+	if(score >= 5) {
+		let lbullet = new Bullet(0xffffff, ship.x, ship.y, { x: -.1 , y: -1 });
+		bullets.push(lbullet);
+		gameScene.addChild(lbullet);
+		
+		let rbullet = new Bullet(0xffffff, ship.x, ship.y, { x: .1 , y: -1 });
+		bullets.push(rbullet);
+		gameScene.addChild(rbullet);
+	}
+	
+	shootSound.play();
+}
+
+function createExplosion(x, y, frameWidth, frameHeight) {
+	let w = frameWidth / 2;
+	let h = frameHeight / 2;
+	let expl = new PIXI.AnimatedSprite(explosionTextures);
+	expl.x = x - w;
+	expl.y = y - h;
+	expl.animationSpeed = 1 / 7;
+	expl.loop = false;
+	expl.onComplete = () => gameScene.removeChild(expl);
+	explosions.push(expl);
+	gameScene.addChild(expl);
+	expl.play();
+}
+
 
 function end() {
 	paused = true;
@@ -319,6 +411,9 @@ function end() {
 	
 	explosions.forEach((c) => gameScene.removeChild(c));
 	explosions = [];
+	
+	gameOverScoreLabel.text = `Your Score : ${score}`;
+	gameOverScoreLabel.x = sceneWidth / 2 - gameOverScoreLabel.width / 2;
 	
 	gameOverScene.visible = true;
 	gameScene.visible = false;
