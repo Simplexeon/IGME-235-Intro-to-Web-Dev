@@ -31,7 +31,7 @@
                 <div class="combat-unit">
                     <h3>MonsterName</h3>
                     <hr>
-                    <h4>16</h4>
+					<div class="stats"><h4>Initiative: 16</h4><h4>Health: 433</h4></div>
                 </div>
             </div>
             <div id="co-controls">
@@ -56,9 +56,15 @@
         <h2>Enemies</h2>
         <div class="block" id="enemy-block">
             <div id="enemy-controls">
-                <input id="enemy-search" type="text" size="35" maxlength="35" value="skeleton"></input>
-                <button id="enemy-add">Add</button>
+                <input id="enemy-search" type="search" size="55" maxlength="55" value="skeleton"></input>
+                <!--<button id="enemy-add">Add</button>-->
             </div>
+			<div id="search-results">
+				<div class="result">
+					<p>Name</p>
+					<em>SRD</em>
+				</div>
+			</div>
             <div class="order" id="enemies">
 
             </div>

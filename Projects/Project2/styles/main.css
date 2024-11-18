@@ -33,10 +33,11 @@ main {
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
-
+	
+	width: 95%;
 
     padding: 1rem;
-    margin: 1rem;
+    align-content: center;
 }
 
 .order {
@@ -77,7 +78,7 @@ h2 {
 /* Combat Unit Displays */
 
 .mini .combat-unit {
-    min-width: 150px;
+    min-width: 165px;
     max-width: 25%;
 }
 
@@ -92,20 +93,49 @@ h2 {
     border-color: red;
 }
 
-.mini .combat-unit ul {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    align-items: center;
-
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+.mini .stats {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+	align-items: center;
 }
 
-.mini .combat-unit li {
-    margin: .2rem;
-    padding: 0;
-    padding-left: 0;
-    text-indent: 0;
+.mini .combat-unit h4 {
+	margin: 1rem 1rem;
+}
+
+
+/* Search Results */
+
+#search-results {
+	display: flex;
+	flex-flow: column;
+	flex-wrap: nowrap;
+	justify-content: baseline;
+	align-items: center;
+	
+	width: 95%;
+}
+
+#search-results .result {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	
+	width: 50%;
+	padding: .2rem;
+	
+	background-color: #919191;
+}
+
+.result p {
+	margin: .2rem 2rem;
+	text-align: left;
+}
+
+.result em {
+	margin: .2rem 2rem;
+	text-align: right;
 }
