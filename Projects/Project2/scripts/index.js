@@ -76,24 +76,42 @@ function addMonster(monster) {
 
 function updateMonsterDisplay() {
 	let monsterDisplay = document.querySelector("#enemies")
-	
-	let longString = "";
+	while (monsterDisplay.firstChild) {
+		monsterDisplay.removeChild(monsterDisplay.firstChild);
+	}
 	
 	for(monster of monsters) {
-		longString += "<div class=\"combat-unit\"><h3>" + monster["name"] + "</h3><hr>";
-		longString += "<ul class=\"stats\"><li><h4>Str</h4><p>" + monster["strength"] + "</p></li>";
-		longString += "<li><h4>Dex</h4><p>" + monster["dexterity"] + "</p></li>";
-		longString += "<li><h4>Con</h4><p>" + monster["constitution"] + "</p></li>";
-		longString += "<li><h4>Int</h4><p>" + monster["intelligence"] + "</p></li>";
-		longString += "<li><h4>Wis</h4><p>" + monster["wisdom"] + "</p></li>";
-		longString += "<li><h4>Cha</h4><p>" + monster["charisma"] + "</p></li></ul>";
+		let monsterDiv = document.createElement("div");
+		monsterDiv.className = "combat-unit";
+		monsterDiv.appendChild(document.createTextNode(monster["name"]));
+		monsterDiv.appendChild(document.createElement("hr"));
+		
+		let stats = document.createElement("ul");
+		stats.className = "stats";
+
+		let statString = "<li><p>Str</p><h3>" + monster["strength"] + "</h3></li>";
+		statString += "<li><p>Dex</p><h3>" + monster["dexterity"] + "</h3></li>";
+		statString += "<li><p>Con</p><h3>" + monster["constitution"] + "</h3></li>";
+		statString += "<li><p>Int</p><h3>" + monster["intelligence"] + "</h3></li>";
+		statString += "<li><p>Wis</p><h3>" + monster["wisdom"] + "</h3></li>";
+		statString += "<li><p>Cha</p><h3>" + monster["charisma"] + "</h3></li>";
+
+		stats.innerHTML = statString;
+		monsterDiv.appendChild(stats);
+
+		let healthDiv = document.createElement("div");
+		healthDiv.className = "tank-div";
+
+		monsterDiv.appendChild(healthDiv);
+		
 		longString += "<div class=\"tankyness\"><div><h4>HP</h4><p>" + monster["hit_points"] + "</p></div>";
 		longString += "<div><h4>AC</h4><p>" + monster["armor_class"] + "</p></div></div>";
 		
 		longString += "</div>";
+
+		monsterDisplay.appendChild(monsterDiv);
 	}
 	
-	monsterDisplay.innerHTML = longString;
 }
 
 
