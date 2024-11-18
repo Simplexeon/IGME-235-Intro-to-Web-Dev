@@ -45,6 +45,7 @@ main {
     flex-flow: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 
     min-height: 10rem;
     width: 95%;
