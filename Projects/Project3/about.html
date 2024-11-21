@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixcross Proposal</title>
+
+    <link rel="stylesheet" href="styles/about.css">
+
+</head>
+<body>
+    <main>
+        <h1>Mixcross Project Proposal</h1>
+        <p>A picross variant where columns can be more than one tile wide!</p>
+        <div class="tag-row">
+            <div class="tag">
+                <p>Genre:</p>
+                <h3>Puzzle</h3>
+            </div>
+            <div class="tag">
+                <p>Platform:</p>
+                <h3>Desktop, Mobile</h3>
+            </div>
+        </div>
+
+        <h2>Story</h2>
+        <p>There is none, just a puzzle game.</p>
+
+        <h2>Aesthetics</h2>
+        <img src="media/images/proposal/picross-s6-gameplay.jpg" alt="Picross S6 Gameplay">
+        <p>
+            The desired style is something similar to the Picross S series of games.
+            They do picross really well, so I want to try doing something similar.
+
+            Sound-wise, the game will have calm ambient background music and simple
+            interaction sounds.
+        </p>
+
+        <h2>Gameplay</h2>
+        <p>
+            Picross is a game with a grid and numbers lined up before each row and column.
+            These numbers tell you which squares must be filled in or empty. For each numbers,
+            that many squares must be filled in in a row. Between numbers, there needs to be
+            a gap of at least one square.
+        </p>
+        <p>
+            For this variant, some of the columns or rows will be more than one square wide. 
+            This will mean that players will need to use these columns / rows to figure out how
+            the columns / rows next to them are laid out.
+            This is a little bit similar to Mega Picross, except rather than having single
+            squares mixed in, it's just a double-sized grid for part of the puzzle.
+        </p>
+        <p>
+            The puzzle will only alert when it's been completed successfully, unless the player
+            chooses to click the check button to get notified of incorrect tiles.
+        </p>
+        <p>
+            Gameplay will be explained in a tutorial section beneath the game.
+        </p>  
+        <p>
+            On desktop, left click will fill in a tile and right click will mark it with an X.
+            On mobile, however, there will be buttons in the upper-left empty space of the puzzle to swap
+            between placing tiles and X's.
+        </p>
+
+        <h2>Mockups</h2>
+        <div id="mockups">
+            <h3>Desktop</h3>
+            <img src="media/images/proposal/desktop-mockup.png" alt="desktop mockup">
+            <h3>Mobile</h3>
+            <img src="media/images/proposal/mobile-mockup.png" alt="mobile mockup">
+        </div>
+        
+        <h2>Other</h2>
+        <p>
+            I'm planning on loading the puzzles from .json files, using something like
+            <code>
+                let file-path = "media/puzzles/sample-puzzle.json";
+                let puzzle = fetch(file-path)
+                    .then((res) => {
+                        if(!res.ok) {
+                            console.log("Error loading " + file-path)
+                        }
+                        return res.json();
+                    });
+            </code>
+
+            This will allow the creation of many different puzzles easily.
+        </p>
+
+        <h2>Developer Info</h2>
+        <p>I'm Ryan Doyle, a "4th" year GDD Major.</p>
+        <h3>Skills</h3>
+        <ul>
+            <li>Godot</li>
+            <li>C#</li>
+            <li>C++</li>
+            <li>Systems Design</li>
+            <li>UX Design</li>
+            <li>Pixel Art</li>
+        </ul>
+        
+        <h3>Interests</h3>
+        <ul>
+            <li>Tabletop Games</li>
+            <li>Puzzle Games</li>
+            <li></li>
+        </ul>
+
+    </main>
+</body>
+</html>

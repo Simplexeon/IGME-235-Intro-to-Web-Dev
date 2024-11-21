@@ -1,0 +1,15 @@
+
+main {
+    display: block;
+
+    width: 60%;
+    margin: auto;
+}
+
+.tag-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
