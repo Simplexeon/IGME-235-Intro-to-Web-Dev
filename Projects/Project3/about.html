@@ -65,25 +65,32 @@
 
         <h2>Mockups</h2>
         <div id="mockups">
-            <h3>Desktop</h3>
-            <img src="media/images/proposal/desktop-mockup.png" alt="desktop mockup">
-            <h3>Mobile</h3>
-            <img src="media/images/proposal/mobile-mockup.png" alt="mobile mockup">
+            <div class="tag">
+                <h3>Desktop</h3>
+                <img src="media/images/proposal/desktop-mockup.png" alt="desktop mockup">
+            </div>
+            <div class="tag">
+                <h3>Mobile</h3>
+                <img src="media/images/proposal/mobile-mockup.png" alt="mobile mockup">
+            </div>
         </div>
         
         <h2>Other</h2>
         <p>
             I'm planning on loading the puzzles from .json files, using something like
-            <code>
-                let file-path = "media/puzzles/sample-puzzle.json";
-                let puzzle = fetch(file-path)
-                    .then((res) => {
-                        if(!res.ok) {
-                            console.log("Error loading " + file-path)
-                        }
-                        return res.json();
-                    });
-            </code>
+            <pre>
+                <code>
+let file-path = "media/puzzles/sample-puzzle.json";
+let puzzle = fetch(file-path)
+    .then((res) => {
+        if(!res.ok) {
+            console.log("Error loading " + file-path)
+        }
+        return res.json();
+    });
+                </code>
+            </pre>
+            
 
             This will allow the creation of many different puzzles easily.
         </p>
@@ -104,7 +111,7 @@
         <ul>
             <li>Tabletop Games</li>
             <li>Puzzle Games</li>
-            <li></li>
+            <li>Rock Climbing</li>
         </ul>
 
     </main>

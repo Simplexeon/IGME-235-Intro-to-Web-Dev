@@ -1,15 +1,70 @@
 
+body {
+    background-color: blanchedalmond;
+}
+
 main {
     display: block;
 
     width: 60%;
     margin: auto;
+    padding: 2rem 3rem;
+
+    background-color: lightblue;
 }
 
 .tag-row {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: start;
+
+}
+
+.tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
+    margin: 1rem;
+}
+
+.tag p {
+    margin: 0;
+}
+
+.tag h3 {
+    margin: 0 .2rem;
+}
+
+img {
+    height: 400px;
+    width: auto;
+    text-align: center;
+}
+
+#mockups {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+h2 {
+    margin: 0 .4rem;
+    margin-top: 1rem;
+}
+
+p {
+    margin: 0, .4rem;
+}
+
+code {
+    display: block;
+
+    padding: .4rem;
+
+    background-color: lightgrey;
+    border-radius: .4rem;
 }
