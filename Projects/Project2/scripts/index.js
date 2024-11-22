@@ -1,7 +1,7 @@
 
 
 // Pexels API paEVAyCYoDaeRIfffGm61640fmNct6Mz9owiPixlpC1OROYiRufPY5OP
-const DND_MONSTER_QUERY = "https://api.open5e.com/v1/monsters/?limit=10&search=";
+const DND_MONSTER_QUERY = "https://api.open5e.com/v1/monsters/?limit=10&ordering=hit_points&search=";
 const RNG_QUERY = "http://www.randomnumberapi.com/api/v1.0/random?min=1&max=20&count=10";
 
 
@@ -83,7 +83,12 @@ function updateMonsterDisplay() {
 	for(monster of monsters) {
 		let monsterDiv = document.createElement("div");
 		monsterDiv.className = "combat-unit";
-		monsterDiv.appendChild(document.createTextNode(monster["name"]));
+		
+		let monsterName = document.createElement("h1");
+		monsterName.innerHTML = monster["name"];
+		
+		monsterDiv.appendChild(monsterName);
+		
 		monsterDiv.appendChild(document.createElement("hr"));
 		
 		let stats = document.createElement("ul");
@@ -102,12 +107,62 @@ function updateMonsterDisplay() {
 		let healthDiv = document.createElement("div");
 		healthDiv.className = "tank-div";
 
+		let healthStatsString = "<div><p>HP</p><h3>" + monster["hit_points"] + "</h3></div>";
+		healthStatsString += "<div><p>AC</p><h3>" + monster["armor_class"] + "</h3></div>";
+		healthDiv.innerHTML = healthStatsString;
+		
 		monsterDiv.appendChild(healthDiv);
+		monsterDiv.appendChild(document.createElement("hr"));
 		
-		longString += "<div class=\"tankyness\"><div><h4>HP</h4><p>" + monster["hit_points"] + "</p></div>";
-		longString += "<div><h4>AC</h4><p>" + monster["armor_class"] + "</p></div></div>";
+		let generalDiv = document.createElement("div");
+		generalDiv.className = "general-info";
 		
-		longString += "</div>";
+		let generalString = "<p><em>Speed</em>:";
+		for(let speed in monster["speed"]) {
+			generalString += " " + speed + " " + monster["speed"][speed] + "ft,";
+		}
+		generalString = generalString.slice(0, generalString.length - 1);
+		generalString += "</p>";
+		
+		generalString += "<h3>Resistances</h3>";
+		if(monster["damage_resistances"] != "") {
+			generalString += `<p>${monster["damage_resistances"]}</p>`;
+		}
+		else {
+			generalString += "<p>None.</p>";
+		}
+		generalString += "<h3>Vulnerabilities</h3>";
+		if(monster["damage_vulnerabilities"] != "") {
+			generalString += `<p>${monster["damage_vulnerabilities"]}</p>`;
+		}
+		else {
+			generalString += "<p>None.</p>";
+		}
+		
+		
+		if(monster["special_abilities"].length > 0) {
+			generalString += "<h3>Special Abilities</h3><hr>";
+			
+			for(let ability of monster["special_abilities"]) {
+				generalString += `<p><em>${ability["name"]}</em> ${ability["desc"]}</p>`;
+			}
+		}
+		
+		if(monster["actions"].length > 0) {
+			generalString += "<h3>Actions</h3><hr>";
+			
+			for(let ability of monster["actions"]) {
+				generalString += `<p><em>${ability["name"]}</em> ${ability["desc"]}</p>`;
+			}
+		}
+		
+		if(monster["desc"] != "") {
+			generalString += `<h3>Description</h3><hr><p>${monster["desc"]}</p>`;
+		}
+		
+		generalDiv.innerHTML = generalString;
+		
+		monsterDiv.appendChild(generalDiv);
 
 		monsterDisplay.appendChild(monsterDiv);
 	}

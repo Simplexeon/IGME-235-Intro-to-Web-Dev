@@ -37,7 +37,7 @@ main {
 	width: 95%;
 
     padding: 1rem;
-    align-content: center;
+    margin: 0 auto;
 }
 
 .order {
@@ -77,6 +77,87 @@ h2 {
 
 
 /* Combat Unit Displays */
+
+.combat-unit {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	
+	width: 40%;
+	min-width: 400px;
+}
+
+.combat-unit .stats {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+	align-items: center;
+	
+	width: 100%;
+	
+	padding: 0;
+    list-style-type: none;
+}
+
+.combat-unit .stats li {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	
+	margin: 0 1rem;
+	padding: 0;
+}
+
+.combat-unit .tank-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	
+	width: 100%;
+}
+
+.combat-unit .tank-div div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	margin: 0 2rem;
+	
+}
+
+.combat-unit .tank-div p {
+	text-align: center;
+}
+
+.combat-unit .tank-div h3 {
+	text-align: center;
+}
+
+.combat-unit hr {
+	
+	width: 100%;
+	margin: 0;
+
+    height: .1rem;
+    text-align: center;
+
+    color: red;
+    background-color: red;
+    border-color: red;
+}
+
+.combat-unit h2 {
+	margin: .1rem;
+}
+
+.combat-unit h3 {
+	margin: .1rem;
+}
 
 .mini .combat-unit {
     min-width: 165px;
