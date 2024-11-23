@@ -87,6 +87,16 @@ h2 {
 	
 	width: 40%;
 	min-width: 400px;
+	
+	margin: 1rem;
+}
+
+.combat-unit h1 {
+	margin-bottom: 0;
+}
+
+.combat-unit em {
+	margin-top: 0;
 }
 
 .combat-unit .stats {
@@ -162,6 +172,8 @@ h2 {
 .mini .combat-unit {
     min-width: 165px;
     max-width: 25%;
+	
+	margin: 1rem;
 }
 
 .mini .combat-unit hr {
@@ -175,15 +187,36 @@ h2 {
     border-color: red;
 }
 
-.mini .stats {
+.mini .combat-unit .combat-stats {
 	display: flex;
 	flex-flow: row;
-	justify-content: space-around;
+	justify-content: baseline;
 	align-items: center;
+	
+	width: 100%;
+}
+
+.mini .combat-unit .combat-stats div {
+	margin: 0 .2rem;
 }
 
 .mini .combat-unit h4 {
 	margin: 1rem 1rem;
+}
+
+
+.full-monster-display {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: baseline;
+}
+
+.full-monster-display .mini {
+	display: flex;
+	flex-flow: column;
+	justify-content: baseline;
+	align-items: center;
 }
 
 
@@ -220,4 +253,13 @@ h2 {
 .result em {
 	margin: .2rem 2rem;
 	text-align: right;
+}
+
+
+/* Footer */
+
+footer {
+	text-align: center;
+	
+	margin: 1rem;
 }

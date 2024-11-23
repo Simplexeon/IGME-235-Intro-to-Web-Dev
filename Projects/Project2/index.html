@@ -12,14 +12,10 @@
     <main>
         <div id="intro">
             <h1>Dungeon Master Screen ++</h1>
-            <p>This site allows you to keep track of lots of important information while running a DnD5e game!</p>
-            <h3>Features</h3>
-            <ul>
-                <li>Monsters</li>
-                <li>Initiative</li>
-                <li>Dice</li>
-                <li>Loot</li>
-            </ul>
+            <p>
+				Search for monsters to see their stats and add them!
+				You can add multiples of monsters, and then you can set their initiatives, see their order in combat, and track their health!
+			</p>
         </div>
         
 
@@ -28,55 +24,43 @@
         <div class="block" id="co-block">
             <div class="order mini" id="co">
                 <!-- Monster and player mini-forms go here, sorted -->
-                <div class="combat-unit">
-                    <h3>MonsterName</h3>
-                    <hr>
-					<div class="stats"><h4>Initiative: 16</h4><h4>Health: 433</h4></div>
-                </div>
+                
             </div>
-            <div id="co-controls">
-                <!-- Buttons to control the combat order -->
+            <!--<div id="co-controls">
+                Buttons to control the combat order 
                 <button id="co-prev">Previous</button> 
                 <button id="co-update">New Order</button>
                 <button id="co-next">Next</button>
-            </div>
+            </div>-->
         </div>
 
+		<!--
         <h2>Players</h2>
         <div class="block" id="player-block">
             <div class="order" id="players">
-                <!-- Player details go here -->
+                 Player details go here 
             </div>
             <div id="player-controls">
-                <!-- Control players -->
+                 Control players
                 <button id="player-new">New Player</button>
             </div>
         </div>
+		-->
 
         <h2>Enemies</h2>
         <div class="block" id="enemy-block">
             <div id="enemy-controls">
-                <input id="enemy-search" type="search" size="55" maxlength="55" value="skeleton"></input>
+                <input id="enemy-search" type="search" size="55" maxlength="55" placeholder="Type a monster here!" autofocus="true"></input>
                 <!--<button id="enemy-add">Add</button>-->
             </div>
 			<div id="search-results">
-				<div class="result">
-					<p>Name</p>
-					<em>SRD</em>
-				</div>
 			</div>
             <div class="order" id="enemies">
 
             </div>
         </div>
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
+		<!--
         <h2>API Testing</h2>
         <ul>
             <li>
@@ -85,6 +69,11 @@
                 <p id="open5e"></p>
             </li>
         </ul>
+		-->
     </main>
+	
+	<footer>
+		<a href="docs.html">Documentation</a>
+	</footer>
 </body>
 </html>
