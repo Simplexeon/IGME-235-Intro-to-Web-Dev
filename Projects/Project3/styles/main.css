@@ -67,8 +67,9 @@
 
 
     margin: .5rem;
+	padding: 1rem;
 
-    background-color: #d1d1d1;
+    background-color: #dedede;
     border-radius: .4rem;
 }
 
@@ -86,4 +87,36 @@
 
 .game-area {
     grid-area: game;
+	
+	display: grid;
+	grid-template-columns: repeat(1fr, 5);
+	grid-template-rows: repeat(1fr, 5);
+	grid-template-areas: "1 2 3 4 5"
+						 "6 7 8 9 10"
+						 "11 12 13 14 15"
+						 "16 17 18 19 20"
+						 "21 22 23 24 25";
+	
+	padding: .8rem;
+	
+	background-color: #d1d1d1;
+	
+	border-radius: .8rem;
+}
+
+.tile {
+	background-color: white;
+	
+	margin: 2px;
+	
+	border-radius: .4rem;
+	border-width: 0;
+}
+
+.tile:hover {
+	background-color: #f1f1f1;
+	
+	outline-color: #00dd7d;
+	outline-width: 4px;
+	outline-style: solid;
 }
