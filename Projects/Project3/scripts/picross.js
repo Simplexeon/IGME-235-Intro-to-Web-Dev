@@ -2,7 +2,8 @@
 
 // PROPERTIES
 
-const GRID_SIZE = 5;
+const GRID_SIZE = 10;
+const TILE_LIGHT_CHANGE = 18;
 
 
 // Elements
@@ -16,7 +17,6 @@ let gridTiles;
 window.onload = init;
 
 function init(e) {
-	console.log("hi")
 	setupGrid(GRID_SIZE, GRID_SIZE);
 }
 
@@ -42,7 +42,6 @@ function setupGrid(rows, columns) {
 		gridElementString += "\"";
 	}
 	gridElement.style.gridTemplateAreas = gridElementString;
-	console.log(gridElementString)
 	
 	
 	// Clear the grid
@@ -54,17 +53,67 @@ function setupGrid(rows, columns) {
 	// Add tiles
 	gridTiles = [];
 	
+	let rowLightness = 255 - TILE_LIGHT_CHANGE;
 	for(let i = 0; i < columns; i++) {
+
+		let lightness = rowLightness;
+
 		let column = [];
 		for(let j = 0; j < rows; j++) {
-			let tile = document.createElement("button");
-			tile.className = "tile";
+			let tileElement = document.createElement("button");
+			tileElement.className = "tile";
+			tileElement.style.backgroundColor = `color(srgb ${lightness / 255} ${lightness / 255} ${lightness / 255})`;
 			
-			gridElement.appendChild(tile);
+			let tile = new Tile(tileElement);
+
+			// Left and right click
+			tileElement.addEventListener("click", (e) => tileClicked(e, tile));
+			tileElement.addEventListener("contextmenu", (e) => tileXed(e, tile));
+
+			gridElement.appendChild(tileElement);
 			column.push(tile);
+
+			// Change lightness before to prevent trailing color changes
+			if(j % 2 == 0) {
+				lightness -= TILE_LIGHT_CHANGE;
+			}
+			else {
+				lightness += TILE_LIGHT_CHANGE;
+			}
 		}
+
 		gridTiles.push(column);
+
+		// Change lightness 
+		if(i % 2 == 0) {
+			rowLightness -= TILE_LIGHT_CHANGE;
+		}
+		else {
+			rowLightness += TILE_LIGHT_CHANGE;
+		}
 	}
 	
 	
+}
+
+function tileClicked(e, tile) {
+	// Left Click
+	if(tile.state == 0) {
+		tile.changeTileState(1);
+	}
+	else {
+		tile.changeTileState(0);
+	}
+}
+
+function tileXed(e, tile) {
+	e.preventDefault();
+
+	if(tile.state == 0) {
+		tile.changeTileState(2);
+	}
+	else {
+		// Right Click
+		tile.changeTileState(0);
+	}
 }
