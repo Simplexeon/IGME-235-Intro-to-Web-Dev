@@ -62,8 +62,8 @@
     grid-template-areas: "stats columns"
                          "rows game";
     
-    width: 700px;
-    height: 700px;
+    width: 750px;
+    height: 750px;
 
 
     margin: .5rem;
