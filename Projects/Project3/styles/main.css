@@ -95,6 +95,14 @@
     flex-wrap: nowrap;
     align-items: end;
     justify-content: center;
+	
+	/*
+	border-style: solid;
+	border-width: 0;
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-color: #808080;
+	*/
 }
 
 .game-area {

@@ -29,6 +29,8 @@ function setupGrid(rows, columns) {
 	gridElement.style.gridTemplateColumns = `repeat(1fr, ${columns});`;
 	gridElement.style.gridTemplateRows = `repeat(1fr, ${rows});`;
 	
+	gridElement.addEventListener("contextmenu", (e) => e.preventDefault());
+	
 	let gridElementString = "";
 	let num = 1;
 	for(let i = 0; i < columns; i++) {
