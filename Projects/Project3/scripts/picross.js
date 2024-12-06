@@ -11,6 +11,20 @@ const TILE_LIGHT_CHANGE = 18;
 let gridTiles;
 
 
+// Variables
+
+// Track if the mouse is down
+let mouseDown;
+
+// Track whether or not the user is placing or
+// removing tiles, so they don't accidentally erase
+// their work.
+// 0 = Not placing
+// 1 = placing tiles
+// 2 = placing x's
+// 3 = removing marks
+let placingState;
+
 
 // Setup
 
@@ -18,8 +32,11 @@ window.onload = init;
 
 function init(e) {
 	setupGrid(GRID_SIZE, GRID_SIZE);
+	mouseDown = false;
+	placingState = 0;
+	window.onmousedown = pressedMouse;
+	window.onmouseup = mouseReleased;
 }
-
 
 
 // Functions
@@ -69,8 +86,9 @@ function setupGrid(rows, columns) {
 			let tile = new Tile(tileElement);
 
 			// Left and right click
-			tileElement.addEventListener("click", (e) => tileClicked(e, tile));
-			tileElement.addEventListener("contextmenu", (e) => tileXed(e, tile));
+			tileElement.addEventListener("mousedown", (e) => tileClicked(e, tile));
+			tileElement.addEventListener("contextmenu", (e) => xTile(e, tile));
+			tileElement.addEventListener("mouseenter", (e) => mouseEnteredTile(e, tile));
 
 			gridElement.appendChild(tileElement);
 			column.push(tile);
@@ -99,23 +117,59 @@ function setupGrid(rows, columns) {
 }
 
 function tileClicked(e, tile) {
-	// Left Click
-	if(tile.state == 0) {
-		tile.changeTileState(1);
+	// Only on left click
+	if(mouseDown == 1 || e.button == 0) {
+		if(tile.state == 0) {
+			// Don't place if erasing
+			if(placingState == 0 || placingState == 1) {
+				tile.changeTileState(1);
+				placingState = 1;
+			}
+		}
+		else {
+			// Don't erase if placing tiles
+			if(placingState == 0 || placingState == 3) {
+				tile.changeTileState(0);
+				placingState = 3;
+			}
+		}
 	}
-	else {
-		tile.changeTileState(0);
+	if(mouseDown == 3 || e.button == 2) {
+		if(tile.state == 0) {
+			if(placingState == 0 || placingState == 2) {
+				tile.changeTileState(2);
+				placingState = 2;
+			}
+		}
+		else {
+			// Right Click
+			if(placingState == 0 || placingState == 3) {
+				tile.changeTileState(0);
+				placingState = 3;
+			}
+		}
 	}
 }
 
-function tileXed(e, tile) {
+function xTile(e, tile) {
 	e.preventDefault();
+}
 
-	if(tile.state == 0) {
-		tile.changeTileState(2);
-	}
-	else {
-		// Right Click
-		tile.changeTileState(0);
+
+// -------- Tracking Mouse State for DRAGGING ----------
+
+function pressedMouse(e) {
+	// Add one so that 0 can be no button pressed
+	mouseDown = e.button + 1;
+}
+
+function mouseReleased(e) {
+	mouseDown = 0;
+	placingState = 0;
+}
+
+function mouseEnteredTile(e, tile) {
+	if(mouseDown != 0) {
+		tileClicked(e, tile);
 	}
 }
