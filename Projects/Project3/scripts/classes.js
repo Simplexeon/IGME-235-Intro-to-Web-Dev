@@ -36,3 +36,21 @@ class Tile {
     }
     
 }
+
+
+class Number {
+	// States
+	// 0: Regular
+	// 1: Filled
+	// 2: Line Error
+	
+	constructor(number, element) {
+		this.element = element;
+		this.number = number;
+		this.state = 0;
+	}
+	
+	setState(state) {
+		this.state = state;
+	}
+}

@@ -6,6 +6,8 @@
     align-items: start;
 
     width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
 
     background-color: #f5f5f5;
     border-radius: .4rem;
@@ -62,9 +64,11 @@
     grid-template-areas: "stats columns"
                          "rows game";
     
+	position: relative;
+	
     width: 750px;
     height: 750px;
-
+	
 
     margin: .5rem;
 	padding: 1rem;
@@ -105,17 +109,13 @@
 	*/
 }
 
+
+/* Grid */
+
 .game-area {
     grid-area: game;
 	
 	display: grid;
-	grid-template-columns: repeat(1fr, 5);
-	grid-template-rows: repeat(1fr, 5);
-	grid-template-areas: "1 2 3 4 5"
-						 "6 7 8 9 10"
-						 "11 12 13 14 15"
-						 "16 17 18 19 20"
-						 "21 22 23 24 25";
 	
 	padding: .8rem;
 	
@@ -123,6 +123,25 @@
 	
 	border-radius: .8rem;
 }
+
+.centerline {
+	display: block;
+	position: absolute;
+	
+	height: 0px;
+	
+	/* Center positioning */
+	transform: translate(-50%,-50%);
+	
+	border-width: 2px;
+	border-color: #fffa69;
+	border-style: solid;
+	
+	z-index: 1;
+}
+
+
+/* Tiles */
 
 .tile {
     display: flex;
@@ -142,6 +161,8 @@
     color: #d41b06;
     font-size: 3rem;
     text-align: center;
+	
+	z-index: 2;
 }
 
 .tile:hover {
@@ -152,6 +173,8 @@
 	outline-style: solid;
 }
 
+
+/* Numbers */
 
 .row.numbers {
     display: flex;
@@ -186,7 +209,7 @@
     align-items: center;
 
     height: 100%;
-    width: 51px;
+    width: 50px;
 
     border-width: 0;
     border-right-width: 2px;

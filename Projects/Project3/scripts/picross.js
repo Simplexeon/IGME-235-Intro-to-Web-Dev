@@ -8,6 +8,7 @@ const TILE_LIGHT_CHANGE = 18;
 
 // Elements
 
+let levelData;
 let gridTiles;
 
 
@@ -31,7 +32,7 @@ let placingState;
 window.onload = init;
 
 function init(e) {
-	setupGrid(GRID_SIZE, GRID_SIZE);
+	loadLevel("levels/level-test.json");
 	mouseDown = false;
 	placingState = 0;
 	window.onmousedown = pressedMouse;
@@ -40,6 +41,73 @@ function init(e) {
 
 
 // Functions
+
+function loadLevel(filepath) {
+	fetch(filepath).then((response) => response.json()).then(fileLoaded);
+}
+
+function fileLoaded(json) {
+	levelData = json;
+	
+	setupGrid(json["size"], json["size"]);
+	
+	let columnData = [];
+	let columnNumberDiv = document.querySelector(".column-area");
+	for(let line of levelData["columns"]) {
+		
+		let numberDiv = document.createElement("div");
+		numberDiv.className = "column numbers";
+		
+		let lineData = [];
+		for(let number of line) {
+			let numberElement = document.createElement("p");
+			numberElement.innerHTML = number;
+			
+			numberDiv.appendChild(numberElement);
+			lineData.push(new Number(number, numberElement));
+		}
+		
+		columnNumberDiv.appendChild(numberDiv);
+		
+		columnData.push(lineData);
+	}
+	levelData["columns"] = columnData;
+	
+	
+	let rowData = [];
+	let rowNumberDiv = document.querySelector(".row-area");
+	for(let line of levelData["rows"]) {
+		
+		let numberDiv = document.createElement("div");
+		numberDiv.className = "row numbers";
+		
+		let lineData = [];
+		for(let number of line) {
+			let numberElement = document.createElement("p");
+			numberElement.innerHTML = number;
+			
+			numberDiv.appendChild(numberElement);
+			lineData.push(new Number(number, numberElement));
+		}
+		
+		rowNumberDiv.appendChild(numberDiv);
+		
+		rowData.push(lineData);
+	}
+	levelData["rows"] = rowData;
+}
+
+function createNumberDiv(numbers, className) {
+	
+	let divString = "";
+	for(let number of numbers) {
+		divString += `<p>${number}</p>`;
+	}
+	numberDiv.innerHTML = divString;
+	
+	return numberDiv;
+}
+
 
 function setupGrid(rows, columns) {
 	let gridElement = document.querySelector(".game-area");
@@ -114,7 +182,41 @@ function setupGrid(rows, columns) {
 	}
 	
 	
+	// Create CENTERLINES
+	
+	let gameElement = document.querySelector("#game");
+	let columnArea = document.querySelector(".column-area");
+	let rowArea = document.querySelector(".row-area");
+	
+	let rowBaseYPos = columnArea.offsetHeight + columnArea.offsetTop;
+	for(let i = 5; i < rows; i += 5) {
+		let centerline = document.createElement("span");
+		centerline.className = "centerline";
+		
+		centerline.style.width = `${gridElement.offsetWidth - 4}px`;
+		centerline.style.height = 0;
+		centerline.style.top = `${rowBaseYPos + ((i / rows) * gridElement.offsetHeight)}px`;
+		centerline.style.left = `${((gameElement.offsetWidth - rowArea.offsetWidth) / 2) + rowArea.offsetWidth}px`;
+		
+		gameElement.appendChild(centerline);
+	}
+	
+	let columnBaseXPos = rowArea.offsetWidth + rowArea.offsetLeft;
+	for(let i = 5; i < columns; i += 5) {
+		let centerline = document.createElement("span");
+		centerline.className = "centerline";
+		
+		centerline.style.height = `${gridElement.offsetHeight - 4}px`;
+		centerline.style.width = 0;
+		centerline.style.left = `${columnBaseXPos + ((i / columns) * gridElement.offsetHeight)}px`;
+		centerline.style.top = `${((gameElement.offsetHeight - columnArea.offsetHeight) / 2) + columnArea.offsetHeight}px`;
+		
+		gameElement.appendChild(centerline);
+	}
 }
+
+
+// --------- TILE INTERACTION -----------------
 
 function tileClicked(e, tile) {
 	// Only on left click
