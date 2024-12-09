@@ -49,7 +49,19 @@ function loadLevel(filepath) {
 function fileLoaded(json) {
 	levelData = json;
 	
-	setupGrid(json["size"], json["size"]);
+	levelData["grid"] = [];
+	for(let i = 0; i < levelData["size"]; i++) {
+		let column = [];
+		
+		for(let j = 0; j < levelData["size"]; j++) {
+			column.push(0);
+		}
+		
+		levelData["grid"].push(column);
+	}
+	
+	
+	setupGrid(levelData["size"], levelData["size"]);
 	
 	let columnData = [];
 	let columnNumberDiv = document.querySelector(".column-area");
@@ -95,6 +107,11 @@ function fileLoaded(json) {
 		rowData.push(lineData);
 	}
 	levelData["rows"] = rowData;
+	
+	
+	// This pre-check ensures that any empty lines
+	// are automatically marked completed.
+	checkCompletion();
 }
 
 function createNumberDiv(numbers, className) {
@@ -151,7 +168,7 @@ function setupGrid(rows, columns) {
 			tileElement.className = "tile";
 			tileElement.style.backgroundColor = `color(srgb ${lightness / 255} ${lightness / 255} ${lightness / 255})`;
 			
-			let tile = new Tile(tileElement);
+			let tile = new Tile(i, j, tileElement, levelData);
 
 			// Left and right click
 			tileElement.addEventListener("mousedown", (e) => tileClicked(e, tile));
@@ -251,6 +268,8 @@ function tileClicked(e, tile) {
 			}
 		}
 	}
+	
+	checkCompletion();
 }
 
 function xTile(e, tile) {
@@ -275,3 +294,185 @@ function mouseEnteredTile(e, tile) {
 		tileClicked(e, tile);
 	}
 }
+
+
+// --------------------- COMPLETION DETECTION --------------------
+
+function checkCompletion() {
+	
+	// COLUMNS
+	for(let column in levelData["columns"]) {
+		let columnData = levelData["columns"][column];
+		
+		let currentNumber = 0;
+		let currentLine = 0;
+		let errorLine = false;
+		for(let y = 0; y < levelData["size"]; y++) {
+			//console.log(`Column: ${column} Number: ${currentNumber} CurrentLineLength: ${currentLine}`);
+			
+			// Track the length of the currently being-checked line.
+			if(levelData["grid"][y][column] == 1) {
+				currentLine += 1;
+				
+				// Check for errors after the line was solved.
+				// This will trigger if the successful solution
+				// doesn't take up the whole line, and then there
+				// are additional pieces placed after the number of lines.
+				if(currentNumber >= columnData.length) {
+					// LINE ERROR
+					errorLine = true;
+					break;
+				}
+				
+				// Check if on the end
+				if(y + 1 == levelData["size"]) {
+					if(columnData[currentNumber].number == currentLine) {
+						// CORRECT LINE
+						columnData[currentNumber].setState(1);
+					}
+					else {
+						columnData[currentNumber].setState(0);
+					}
+					currentNumber++;
+				}
+				continue;
+			}
+			else if(currentLine > 0) {
+				
+				// Check if the line was correct
+				if(columnData[currentNumber].number == currentLine) {
+					// CORRECT LINE
+					columnData[currentNumber].setState(1);
+				}
+				else {
+					columnData[currentNumber].setState(0);
+				}
+				
+				// Only continue to the next number if one has already been decided;
+				currentLine = 0;
+				currentNumber += 1;
+				
+				// Onto the next number
+				continue;
+			}
+			
+			// Reset if not on last number
+			// Ensures that the solver can skip numbers when needed.
+			if(currentNumber < columnData.length - 1 && y == levelData["size"]) {
+				columnData[currentNumber].setState(0);
+				
+				y = 0;
+				currentNumber++;
+			}
+			
+			if(currentNumber < columnData.length && y == levelData["size"] - 1) {
+				if(columnData[currentNumber].number == 0) {
+					// This is only reachable if the line is empty.
+					columnData[currentNumber].setState(1);
+				}
+			}
+			
+		}
+		
+		// Any numbers still not reached are unfilled
+		while(currentNumber < columnData.length) {
+			columnData[currentNumber].setState(0);
+			currentNumber++;
+		}
+		
+		if(errorLine) {
+			for(let number of columnData) {
+				number.setState(2);
+			}
+		}
+	}
+	
+	// ROWS
+	for(let row in levelData["rows"]) {
+		let rowData = levelData["rows"][row];
+		
+		let currentNumber = 0;
+		let currentLine = 0;
+		let errorLine = false;
+		for(let x = 0; x < levelData["size"]; x++) {
+			
+			//console.log(`Column: ${column} Number: ${currentNumber} CurrentLineLength: ${currentLine}`);
+			
+			// Track the length of the currently being-checked line.
+			if(levelData["grid"][row][x] == 1) {
+				currentLine += 1;
+				
+				// Check if after line solved
+				if(currentNumber >= rowData.length) {
+					// LINE ERROR
+					errorLine = true;
+					break;
+				}
+				
+				// Check if on the end
+				if(x + 1 == levelData["size"]) {
+					if(rowData[currentNumber].number == currentLine) {
+						// CORRECT LINE
+						rowData[currentNumber].setState(1);
+					}
+					else {
+						rowData[currentNumber].setState(0);
+					}
+					currentNumber++;
+				}
+				continue;
+			}
+			else if(currentLine > 0) {
+				
+				// Check if the line was correct
+				if(rowData[currentNumber].number == currentLine) {
+					// CORRECT LINE
+					rowData[currentNumber].setState(1);
+				}
+				else {
+					rowData[currentNumber].setState(0);
+				}
+				
+				// Only continue to the next number if one has already been decided;
+				currentLine = 0;
+				currentNumber += 1;
+				
+				// Onto the next number
+				continue;
+			}
+			
+			// Reset if not on last number
+			if(currentNumber < rowData.length - 1 && x == levelData["size"]) {
+				rowData[currentNumber].setState(0);
+				
+				x = 0;
+				currentNumber++;
+			}
+			
+			if(currentNumber < rowData.length && x == levelData["size"] - 1) {
+				if(rowData[currentNumber].number == 0) {
+					// This is only reachable if the line is empty.
+					rowData[currentNumber].setState(1);
+					currentNumber++;
+				}
+			}
+		}
+		
+		// Any numbers still not reached are unfilled
+		while(currentNumber < rowData.length) {
+			rowData[currentNumber].setState(0);
+			currentNumber++;
+		}
+		
+		if(errorLine) {
+			for(let number of rowData) {
+				number.setState(2);
+			}
+		}
+	}
+	
+	
+	// Check if every number is in the completed state.
+	
+}
+

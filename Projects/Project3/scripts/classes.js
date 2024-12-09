@@ -1,5 +1,8 @@
 
 const TILE_FILLED_COLOR = "#171717";
+const NUMBER_BASE_COLOR = "#171717";
+const NUMBER_FILLED_COLOR = "#38ab79";
+const NUMBER_ERROR_COLOR = "#d41b06";
 
 
 
@@ -10,9 +13,12 @@ class Tile {
     // 1 = filled
     // 2 = X
 
-    constructor(element) {
+    constructor(x, y, element, level) {
+		this.x = x;
+		this.y = y;
         this.element = element;
-        this.baseColor = element.style.backgroundColor;
+        this.level = level;
+		this.baseColor = element.style.backgroundColor;
         this.state = 0;
     }
 
@@ -33,6 +39,8 @@ class Tile {
                 this.element.style.backgroundColor = this.baseColor;
                 break;
         }
+		
+		this.level["grid"][this.x][this.y] = this.state;
     }
     
 }
@@ -52,5 +60,18 @@ class Number {
 	
 	setState(state) {
 		this.state = state;
+		
+		switch(this.state) {
+			case 0: 
+				this.element.style.color = NUMBER_BASE_COLOR;
+				break;
+			case 1:
+				this.element.style.color = NUMBER_FILLED_COLOR;
+				break;
+			case 2:
+				this.element.style.color = NUMBER_ERROR_COLOR;
+				break;
+		}
+		
 	}
 }
