@@ -306,6 +306,7 @@ function checkCompletion() {
 		
 		let currentNumber = 0;
 		let currentLine = 0;
+		let returnPoint = 0;
 		let errorLine = false;
 		for(let y = 0; y < levelData["size"]; y++) {
 			//console.log(`Column: ${column} Number: ${currentNumber} CurrentLineLength: ${currentLine}`);
@@ -322,6 +323,18 @@ function checkCompletion() {
 					// LINE ERROR
 					errorLine = true;
 					break;
+				}
+				
+				// If larger than the current number, continue to the next number
+				if(columnData[currentNumber].number < currentLine) {
+					// CORRECT LINE
+					columnData[currentNumber].setState(0);
+					currentNumber++;
+					
+					if(currentNumber >= columnData.length) {
+						// Finished, end.
+						break;
+					}
 				}
 				
 				// Check if on the end
@@ -350,6 +363,7 @@ function checkCompletion() {
 				
 				// Only continue to the next number if one has already been decided;
 				currentLine = 0;
+				returnPoint = y;
 				currentNumber += 1;
 				
 				// Onto the next number
@@ -358,17 +372,17 @@ function checkCompletion() {
 			
 			// Reset if not on last number
 			// Ensures that the solver can skip numbers when needed.
-			if(currentNumber < columnData.length - 1 && y == levelData["size"]) {
-				columnData[currentNumber].setState(0);
-				
-				y = 0;
-				currentNumber++;
-			}
-			
 			if(currentNumber < columnData.length && y == levelData["size"] - 1) {
 				if(columnData[currentNumber].number == 0) {
 					// This is only reachable if the line is empty.
 					columnData[currentNumber].setState(1);
+					currentNumber++;
+				}
+				else {
+					columnData[currentNumber].setState(0);
+				
+					y = returnPoint;
+					currentNumber++;
 				}
 			}
 			
@@ -393,6 +407,7 @@ function checkCompletion() {
 		
 		let currentNumber = 0;
 		let currentLine = 0;
+		let returnPoint = 0;
 		let errorLine = false;
 		for(let x = 0; x < levelData["size"]; x++) {
 			
@@ -407,6 +422,18 @@ function checkCompletion() {
 					// LINE ERROR
 					errorLine = true;
 					break;
+				}
+				
+				// If larger than the current number, continue to the next number
+				if(rowData[currentNumber].number < currentLine) {
+					// CORRECT LINE
+					rowData[currentNumber].setState(0);
+					currentNumber++;
+					
+					if(currentNumber >= rowData.length) {
+						// Finished, end.
+						break;
+					}
 				}
 				
 				// Check if on the end
@@ -436,23 +463,23 @@ function checkCompletion() {
 				// Only continue to the next number if one has already been decided;
 				currentLine = 0;
 				currentNumber += 1;
+				returnPoint = x;
 				
 				// Onto the next number
 				continue;
 			}
 			
 			// Reset if not on last number
-			if(currentNumber < rowData.length - 1 && x == levelData["size"]) {
-				rowData[currentNumber].setState(0);
-				
-				x = 0;
-				currentNumber++;
-			}
-			
 			if(currentNumber < rowData.length && x == levelData["size"] - 1) {
 				if(rowData[currentNumber].number == 0) {
 					// This is only reachable if the line is empty.
 					rowData[currentNumber].setState(1);
+					currentNumber++;
+				}
+				else {
+					rowData[currentNumber].setState(0);
+				
+					x = returnPoint;
 					currentNumber++;
 				}
 			}
