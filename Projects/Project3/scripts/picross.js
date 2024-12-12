@@ -4,6 +4,9 @@
 
 const GRID_SIZE = 10;
 const TILE_LIGHT_CHANGE = 18;
+const TILE_SIZE_RATE = 50;		// Size of tile for a 10x10
+//const MARGIN_RATE = TILE_SIZE_RATE / 25;
+const MARGIN_SIZE = 2;
 
 
 // Elements
@@ -185,6 +188,11 @@ function setupGrid(rows, columns) {
 		gridElement.removeChild(gridElement.firstChild);
 	}
 	
+	// Set tile size
+	const gridArea = (TILE_SIZE_RATE + 4) * 10;
+	let tileSize = (gridArea / rows) - 4;
+	document.querySelector(":root").style.setProperty("--tile-size", `${tileSize}px`);
+	
 	
 	// Add tiles
 	gridTiles = [];
@@ -199,6 +207,7 @@ function setupGrid(rows, columns) {
 			let tileElement = document.createElement("button");
 			tileElement.className = "tile";
 			tileElement.style.backgroundColor = `color(srgb ${lightness / 255} ${lightness / 255} ${lightness / 255})`;
+			tileElement.style.size = tileSize;
 			
 			let tile = new Tile(i, j, tileElement, levelData);
 
@@ -231,33 +240,44 @@ function setupGrid(rows, columns) {
 	}
 	
 	
+	
+	// Remove old centerlines
+	let gameElement = document.querySelector("#game");
+	let oldLines = document.querySelectorAll("#game .centerline");
+	for(let line of oldLines) {
+		gameElement.removeChild(line);
+	}
+	
+	
+	
 	// Create CENTERLINES
 	
-	let gameElement = document.querySelector("#game");
 	let columnArea = document.querySelector(".column-area");
 	let rowArea = document.querySelector(".row-area");
 	
-	let rowBaseYPos = columnArea.offsetHeight + columnArea.offsetTop;
+	let borderOffset = (gridElement.offsetHeight - ((tileSize + 4) * rows)) / 2;
+	let rowBaseYPos = columnArea.offsetHeight + columnArea.offsetTop + borderOffset;
 	for(let i = 5; i < rows; i += 5) {
 		let centerline = document.createElement("span");
 		centerline.className = "centerline";
 		
 		centerline.style.width = `${gridElement.offsetWidth - 4}px`;
 		centerline.style.height = 0;
-		centerline.style.top = `${rowBaseYPos + ((i / rows) * gridElement.offsetHeight)}px`;
+		centerline.style.top = `${rowBaseYPos + ((tileSize + 4) * (i))}px`;
 		centerline.style.left = `${((gameElement.offsetWidth - rowArea.offsetWidth) / 2) + rowArea.offsetWidth}px`;
 		
 		gameElement.appendChild(centerline);
 	}
 	
-	let columnBaseXPos = rowArea.offsetWidth + rowArea.offsetLeft;
+	borderOffset = (gridElement.offsetWidth - ((tileSize + 4) * columns)) / 2;
+	let columnBaseXPos = rowArea.offsetWidth + rowArea.offsetLeft + borderOffset;
 	for(let i = 5; i < columns; i += 5) {
 		let centerline = document.createElement("span");
 		centerline.className = "centerline";
 		
 		centerline.style.height = `${gridElement.offsetHeight - 4}px`;
 		centerline.style.width = 0;
-		centerline.style.left = `${columnBaseXPos + ((i / columns) * gridElement.offsetHeight)}px`;
+		centerline.style.left = `${columnBaseXPos + ((tileSize + 4) * (i))}px`;
 		centerline.style.top = `${((gameElement.offsetHeight - columnArea.offsetHeight) / 2) + columnArea.offsetHeight}px`;
 		
 		gameElement.appendChild(centerline);
