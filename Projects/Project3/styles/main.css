@@ -1,7 +1,8 @@
 
 :root {
 	--tile-size: 50px;
-	--number-size-ratio: .9;
+	--number-size-ratio: .75;
+	--number-margin-ratio: .42;
 }
 
 body {
@@ -145,6 +146,8 @@ main {
     flex-wrap: nowrap;
     align-items: end;
     justify-content: center;
+	
+	max-height: 100%;
 }
 
 .row-area {
@@ -155,6 +158,8 @@ main {
     flex-wrap: nowrap;
     align-items: end;
     justify-content: center;
+	
+	max-width: 100%;
 	
 	/*
 	border-style: solid;
@@ -215,7 +220,7 @@ main {
 	border-width: 0;
 
     color: #d41b06;
-    font-size: 3rem;
+    font-size: calc(var(--tile-size) * var(--number-size-ratio));
     text-align: center;
 	
 	z-index: 2;
@@ -250,11 +255,14 @@ main {
 }
 
 .numbers p {
+	display: block;
     font-family: "Source Code Pro", Courier, monospace;
-
+	
+	margin: calc(var(--tile-size) * var(--number-size-ratio) * var(--number-margin-ratio)) .2rem;
+	
     font-size: calc(var(--tile-size) * var(--number-size-ratio));
     font-weight: 900;
-    margin: 0 .4rem;
+	line-height: 0;
 }
 
 .column.numbers {
@@ -266,7 +274,7 @@ main {
 
     height: 100%;
     width: var(--tile-size);
-
+	
     border-width: 0;
     border-right-width: 2px;
     border-left-width: 2px;

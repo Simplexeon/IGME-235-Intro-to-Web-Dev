@@ -40,7 +40,7 @@ window.onload = init;
 
 function init(e) {
 	setupLevelSelect();
-	loadLevel("levels/level-1.json");
+	loadLevel("levels/level-5x-target.json");
 	mouseDown = false;
 	placingState = 0;
 	window.onmousedown = pressedMouse;
