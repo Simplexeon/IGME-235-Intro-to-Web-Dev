@@ -40,7 +40,6 @@ function init(e) {
 	placingState = 0;
 	window.onmousedown = pressedMouse;
 	window.onmouseup = mouseReleased;
-	solving = true;
 }
 
 
@@ -138,7 +137,7 @@ function setupGrid(rows, columns) {
 	gridElement.style.gridTemplateColumns = `repeat(1fr, ${columns});`;
 	gridElement.style.gridTemplateRows = `repeat(1fr, ${rows});`;
 	
-	gridElement.addEventListener("contextmenu", (e) => e.preventDefault());
+	document.querySelector("#game").addEventListener("contextmenu", (e) => e.preventDefault());
 	
 	let gridElementString = "";
 	let num = 1;
@@ -237,6 +236,12 @@ function setupGrid(rows, columns) {
 		
 		gameElement.appendChild(centerline);
 	}
+	
+	
+	// Reset the board
+	
+	document.querySelector("#victory-text").style.display = "none";
+	solving = true;
 }
 
 
@@ -566,6 +571,8 @@ function checkCompletion() {
 
 
 function levelCompleted() {
+	solving = false;
 	
+	document.querySelector("#victory-text").style.display = "block";
 }
 
