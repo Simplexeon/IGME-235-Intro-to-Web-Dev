@@ -11,6 +11,9 @@ const TILE_LIGHT_CHANGE = 18;
 let levelData;
 let gridTiles;
 
+let time = 0;
+let solving = false;
+
 
 // Variables
 
@@ -37,6 +40,7 @@ function init(e) {
 	placingState = 0;
 	window.onmousedown = pressedMouse;
 	window.onmouseup = mouseReleased;
+	solving = true;
 }
 
 
@@ -112,6 +116,9 @@ function fileLoaded(json) {
 	// This pre-check ensures that any empty lines
 	// are automatically marked completed.
 	checkCompletion();
+	
+	// Start timer
+	setInterval(timer, 1000);
 }
 
 function createNumberDiv(numbers, className) {
@@ -294,6 +301,42 @@ function mouseEnteredTile(e, tile) {
 		tileClicked(e, tile);
 	}
 }
+
+
+// --------- TIMER ------------------
+
+function timer() {
+	if(!solving) {
+		clearTimeout();
+		return;
+	}
+	
+	time++;
+	
+	let timeElement = document.querySelector("#timer");
+	
+	let stringTime = "";
+	if(time > 60) {
+		let min = time / 60;
+		if(min < 10) {
+			stringTime += "0";
+		}
+		stringTime += `${min.toFixed(0)}:`;
+	}
+	else {
+		stringTime += "00:";
+	}
+	
+	if(time % 60 < 10) {
+		stringTime += "0";
+	}
+	
+	stringTime += (time % 60).toFixed(0);
+	
+	timeElement.innerHTML = stringTime;
+	
+}
+
 
 
 // --------------------- COMPLETION DETECTION --------------------
@@ -500,6 +543,29 @@ function checkCompletion() {
 	
 	
 	// Check if every number is in the completed state.
+	let complete = true;
+	for(let column of levelData["columns"]) {
+		for(let number of column) {
+			if(number.state != 1) {
+				complete = false;
+			}
+		}
+	}
+	for(let row of levelData["rows"]) {
+		for(let number of row) {
+			if(number.state != 1) {
+				complete = false;
+			}
+		}
+	}
+	
+	if(complete == true) {
+		levelCompleted();
+	}
+}
+
+
+function levelCompleted() {
 	
 }
 
