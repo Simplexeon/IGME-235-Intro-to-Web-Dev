@@ -12,6 +12,7 @@ let levelData;
 let gridTiles;
 
 let time = 0;
+let intervalID;
 let solving = false;
 
 
@@ -35,7 +36,8 @@ let placingState;
 window.onload = init;
 
 function init(e) {
-	loadLevel("levels/level-test.json");
+	setupLevelSelect();
+	loadLevel("levels/level-1.json");
 	mouseDown = false;
 	placingState = 0;
 	window.onmousedown = pressedMouse;
@@ -44,6 +46,14 @@ function init(e) {
 
 
 // Functions
+
+function setupLevelSelect() {
+	let levelButtons = document.querySelectorAll(".level-listing");
+	
+	for(let button of levelButtons) {
+		button.addEventListener("click", (e) => loadLevel(button.dataset.level));
+	}
+}
 
 function loadLevel(filepath) {
 	fetch(filepath).then((response) => response.json()).then(fileLoaded);
@@ -68,6 +78,12 @@ function fileLoaded(json) {
 	
 	let columnData = [];
 	let columnNumberDiv = document.querySelector(".column-area");
+	
+	// Clear the numbers
+	while (columnNumberDiv.firstChild) {
+		columnNumberDiv.removeChild(columnNumberDiv.firstChild);
+	}
+	
 	for(let line of levelData["columns"]) {
 		
 		let numberDiv = document.createElement("div");
@@ -91,6 +107,12 @@ function fileLoaded(json) {
 	
 	let rowData = [];
 	let rowNumberDiv = document.querySelector(".row-area");
+	
+	// Clear the numbers
+	while (rowNumberDiv.firstChild) {
+		rowNumberDiv.removeChild(rowNumberDiv.firstChild);
+	}
+	
 	for(let line of levelData["rows"]) {
 		
 		let numberDiv = document.createElement("div");
@@ -117,7 +139,11 @@ function fileLoaded(json) {
 	checkCompletion();
 	
 	// Start timer
-	setInterval(timer, 1000);
+	clearInterval(intervalID);
+	document.querySelector("#timer").innerHTML = "00:00";
+	
+	time = 0;
+	intervalID = setInterval(timer, 1000);
 }
 
 function createNumberDiv(numbers, className) {
@@ -312,7 +338,7 @@ function mouseEnteredTile(e, tile) {
 
 function timer() {
 	if(!solving) {
-		clearTimeout();
+		clearInterval(intervalID);
 		return;
 	}
 	

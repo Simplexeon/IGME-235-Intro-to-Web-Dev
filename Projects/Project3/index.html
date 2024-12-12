@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dualcross</title>
+    <title>Web-cross</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,46 +23,38 @@
 </head>
 <body>
     <header>
-        <h1>
-            DualCross
-        </h1>
-        <p>
-            It's like picross, but columns and rows can be wider than
-            just one square.
-        </p>
+        
     </header>
 
     <main>
+		<h1>
+			Web-cross
+		</h1>
+		
+	
         <div id="core">
             <div id="level-select">
-                <a href="" class="level-listing">
+                <button class="level-listing" data-level="levels/level-1.json">
                     <h3>Level 01</h3>
-                    <div class="level-stats">
-                        <p>D: 5</p>
-                        <p>F: 999</p>
-                    </div>
-                </a>
-                <a href="" class="level-listing">
+                </button>
+                <button class="level-listing" data-level="levels/level-2.json">
                     <h3>Level 02</h3>
-                    <div class="level-stats">
-                        <p>D: 5</p>
-                        <p>F: 999</p>
-                    </div>
-                </a>
-                <a href="" class="level-listing">
-                    <h3>Level 05</h3>
-                    <div class="level-stats">
-                        <p>D: 5</p>
-                        <p>F: 999</p>
-                    </div>
-                </a>
-                <a href="" class="level-listing">
+                </button>
+				<button class="level-listing" data-level="levels/level-3.json">
+                    <h3>Level 03</h3>
+                </button>
+				<button class="level-listing" data-level="levels/level-4.json">
                     <h3>Level 04</h3>
-                    <div class="level-stats">
-                        <p>D: 5</p>
-                        <p>F: 999</p>
-                    </div>
-                </a>
+                </button>
+				<button class="level-listing" data-level="levels/level-5.json">
+                    <h3>Level 05</h3>
+                </button>
+				<button class="level-listing" data-level="levels/level-6.json">
+                    <h3>Level 06</h3>
+                </button>
+				<button class="level-listing" data-level="levels/level-7.json">
+                    <h3>Level 07</h3>
+                </button>
             </div>
             <div id="game">
                 <div class="stats-area">
@@ -78,10 +70,37 @@
                 </div>
             </div>
         </div>
+		
+		<h2>About</h2>
+		<p>
+			A web picross game!
+			All of the puzzles are hand-made, so take your time and solve!
+			<br>
+			<em>If you make a mistake, it will not mark a mistake. It will only tell you if the whole puzzle is solved or not.</em>
+		</p>
+		
+		<h2>How to Play</h2>
+		<p>
+			Left click on a cell to fill it in!
+			<br>
+			Right click to mark it with an X.
+		</p>
+		<p>
+			The goal of picross is to fill in the cells so that they fit the clues given by the numbers around the grid.
+			Each number tells you how many filled cells there are next to each other. If there's more than 1 number, there
+			needs to be at least one empty cell until there's another filled cell.
+		</p>
+		<p>
+			<em>Order matters!</em> The order of numbers tells you what order the filled cells appear in the grid. If a number
+			is to the left of another in the same row, then those filled cells will appear before the other ones.
+		</p>
+		
+		<br>
+		<br>
+		
+		
+		<a href="doc.html">Documentation</a>
+		<p>Created by Ryan Doyle, 2024</p>
     </main>
-
-    <footer>
-
-    </footer>
 </body>
 </html>

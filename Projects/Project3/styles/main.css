@@ -1,14 +1,29 @@
 
+body {
+	background-color: #b8b8b8;
+}
+
+h1 {
+	text-align: center;
+	font-size: 3rem;
+}
+
+main {
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+	
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 #core {
     display: flex;
     flex-flow: row;
     justify-content: space-around;
     align-items: start;
 
-    width: 100%;
-	max-width: 1100px;
-	margin: 0 auto;
-
+	padding: 1rem;
+	
     background-color: #f5f5f5;
     border-radius: .4rem;
 }
@@ -26,19 +41,45 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
+	flex-shrink: 100;
     justify-content: space-between;
     align-items: center;
 
     width: 100%;
 
-    background-color: #c9ecf2;
-    margin: .2rem;
+    background-color: #dedede;
+    margin: .6rem 0;
     padding: 0;
 
     border-radius: .3rem;
+	border-style: none;
 
     text-decoration: none;
+	
+	outline-style: solid;
+	outline-color: #808080;
 }
+
+.level-listing:hover {
+	background-color: #96cbff;
+	cursor: pointer;
+}
+
+.level-listing:active {
+	outline-style: none;
+}
+
+
+.level-listing h3 {
+	
+	margin: .2rem .2rem;
+	
+	font-family: "Source Code Pro", Courier, monospace;
+	font-weight: bold;
+	
+	font-size: 1.2rem;
+}
+
 
 .level-listing * {
     padding: 0 0.6rem;
@@ -52,10 +93,6 @@
     width: auto;
 }
 
-.level-stats p {
-    padding: 0 .2rem;
-}
-
 
 #game {
     display: grid;
@@ -66,8 +103,8 @@
     
 	position: relative;
 	
-    width: 750px;
-    height: 750px;
+    min-width: 750px;
+    min-height: 750px;
 	
 
     margin: .5rem;
